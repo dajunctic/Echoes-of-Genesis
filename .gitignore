@@ -1,0 +1,75 @@
+# ==========================================
+# GID IGNORE - ECHOES OF GENESIS (EoG)
+# ==========================================
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing & Coverage
+coverage/
+.nyc_output/
+
+# Production Build Artifacts
+dist/
+build/
+out/
+.cache/
+.parcel-cache/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Database & Storage
+*.sqlite
+*.sqlite3
+*.db
+dump.rdb
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE & Editor Configurations
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# Temporary Files & Archives
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+temp_xlsx/
+*.zip
+*.tar.gz
