@@ -73,3 +73,7 @@ temp/
 temp_xlsx/
 *.zip
 *.tar.gz
+
+# Flare Source Clones (Reference & Assets)
+flare-engine-source/
+flare-game-source/

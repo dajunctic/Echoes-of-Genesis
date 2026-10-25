@@ -1,0 +1,14 @@
+{
+  "name": "@eog/shared",
+  "version": "0.1.0",
+  "description": "Shared types and math utilities for Echoes of Genesis",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

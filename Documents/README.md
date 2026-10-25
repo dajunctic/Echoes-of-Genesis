@@ -5,9 +5,9 @@
 
 ---
 
-## DANH MỤC 8 TÀI LIỆU THIẾT KẾ CHI TIẾT
+## DANH MỤC 9 TÀI LIỆU THIẾT KẾ CHI TIẾT
 
-Toàn bộ tài liệu thiết kế và đặc tả kỹ thuật của dự án đã được chuẩn hóa và phân chia khoa học thành 8 tài liệu độc lập:
+Toàn bộ tài liệu thiết kế và đặc tả kỹ thuật của dự án đã được chuẩn hóa và phân chia khoa học thành 9 tài liệu độc lập:
 
 ### 🌟 [00_THUONG_HIEU_VA_TEN_GAME.md](file:///c:/Projects/Game%20Online/Documents/00_THUONG_HIEU_VA_TEN_GAME.md)
 * **Nội dung:** 
@@ -69,7 +69,7 @@ Toàn bộ tài liệu thiết kế và đặc tả kỹ thuật của dự án 
   * **Hệ thống Quản lý Đạn Đạo (`MissileSystem`):** 5 loại quỹ đạo (bay thẳng, đuổi mục tiêu, parabol, xuyên thấu, giật nảy), vòng lặp update 60 FPS, kiểm tra hitbox va chạm và Object Pool.
   * **Hệ thống Quản lý Hiệu Ứng Hình Ảnh (`FxSystem`):** Quản lý 4 nhóm FX (Ground Decal, Impact Hit, Attached Follow, Camera Screen Shake) bằng GPU particle và Sprite animation.
 
-### 🎭 [07_KICH_BAN_HOI_THOAI_COT_TRUYEN.md](file:///c:/Projects/Game%20Online/Documents/07_KICH_BAN_HOI_THOAI_COT_TRUYEN.md)
+### 🎭 [07_KICH_BAN_HOI_THOAI_COT_TRUYEN.md](file:///d:/Projects/Echoes-of-Genesis/Documents/07_KICH_BAN_HOI_THOAI_COT_TRUYEN.md)
 * **Nội dung:** 
   * Kịch bản lời dẫn mở màn sử thi (Prologue Cinematic).
   * Lời thoại chi tiết theo từng nhiệm vụ chính tuyến của 4 Chương:
@@ -82,5 +82,12 @@ Toàn bộ tài liệu thiết kế và đặc tả kỹ thuật của dự án 
     * Đối đầu tối hậu với Bóng Ma Hư Không (Void Herald).
   * Bộ thông điệp loa chạy chữ toàn server (Boss xuất hiện, rương mở khóa cướp đồ, đập đồ +15 thành công, tiêu diệt tên đỏ).
 
+### ⚔️ [08_TAI_NGUYEN_VA_THAM_KHAO_FLARE.md](file:///d:/Projects/Echoes-of-Genesis/Documents/08_TAI_NGUYEN_VA_THAM_KHAO_FLARE.md)
+* **Nội dung:**
+  * Đánh giá chi tiết 2 repository: `flare-engine` (C++) và `flare-game` (Empyrean Campaign).
+  * Chiến lược khai thác mỏ vàng Asset 2.5D Isometric 8 hướng (Spritesheets nhân vật, quái vật, tilesets, paperdoll, VFX, SFX).
+  * Phân tích lý do không dùng trực tiếp engine C++ cho Web và giải pháp triển khai bản demo H5 Multiplayer (Phaser 3 + WebSocket) host online test ngay trong ngày.
+
 ---
 *Tài liệu được khởi tạo và lưu trữ trực tiếp trong thư mục `Documents` của dự án.*
+
