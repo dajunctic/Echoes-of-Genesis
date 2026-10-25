@@ -25,24 +25,19 @@ const LORE_TIPS = [
 
 export class PreloadScene extends Phaser.Scene {
   private progressBarWidth = 360;
-  private progressBarHeight = 14;
+  private progressBarHeight = 6;
   private currentProgress = 0;
   private targetProgress = 0;
   private currentPhaseIndex = 0;
 
   // UI Components
   private bgImage?: Phaser.GameObjects.Image;
-  private darkOverlay?: Phaser.GameObjects.Graphics;
-  private magicCircleCanvas!: HTMLCanvasElement;
-  private magicCircleImage!: Phaser.GameObjects.Image;
+  private titleLogo?: Phaser.GameObjects.Image;
   private particleEmitters: Phaser.GameObjects.Arc[] = [];
 
   private progressBg!: Phaser.GameObjects.Graphics;
   private progressBarFill!: Phaser.GameObjects.Graphics;
   private progressGlow!: Phaser.GameObjects.Graphics;
-
-  private titleText!: Phaser.GameObjects.Text;
-  private subtitleText!: Phaser.GameObjects.Text;
   private phaseText!: Phaser.GameObjects.Text;
   private percentText!: Phaser.GameObjects.Text;
   private tipText!: Phaser.GameObjects.Text;
@@ -58,8 +53,9 @@ export class PreloadScene extends Phaser.Scene {
   preload(): void {
     console.log('[PreloadScene] Bắt đầu nạp tài nguyên Flare Game...');
 
-    // Nạp ảnh nền Dark Fantasy loading_bg từ public/assets/bg/loading/
+    // Nạp ảnh nền Dark Fantasy loading_bg & Logo game title_bg
     this.load.image('loading_bg', '/assets/bg/loading/loading_bg.png');
+    this.load.image('title_bg', '/assets/bg/loading/title_bg.png');
 
     // 1. Tải tài nguyên từ local hoặc URL GitHub raw của flare-game
     // Vite public folder:
@@ -136,17 +132,11 @@ export class PreloadScene extends Phaser.Scene {
     const centerX = width / 2;
     const centerY = height / 2;
 
-    // 1. Nền Background Dark Fantasy từ ảnh loading_bg
+    // 1. Nền Background Dark Fantasy từ ảnh loading_bg (Giữ nguyên độ sáng & màu sắc gốc của artwork)
     if (this.textures.exists('loading_bg')) {
       this.bgImage = this.add.image(centerX, centerY, 'loading_bg');
       this.bgImage.setDepth(-2);
       this.resizeBgImage(width, height);
-
-      // Lớp phủ tối mờ dịu nhẹ để làm nổi bật text chữ và loading bar
-      this.darkOverlay = this.add.graphics();
-      this.darkOverlay.setDepth(-1);
-      this.darkOverlay.fillStyle(0x04060d, 0.4);
-      this.darkOverlay.fillRect(0, 0, width, height);
     } else {
       // Fallback nếu chưa tải được ảnh
       const bgGraphics = this.add.graphics();
@@ -180,109 +170,85 @@ export class PreloadScene extends Phaser.Scene {
       });
     }
 
-    // 3. Tiêu đề Game sử thi nâng cao lên vùng Header thoáng đãng (Cinematic Header)
-    this.titleText = this.add.text(centerX, centerY - 175, 'ECHOES OF GENESIS', {
-      fontFamily: 'Cinzel, Georgia, serif',
-      fontSize: '28px',
-      fontStyle: 'bold',
-      color: '#fbbf24',
-      stroke: '#000000',
-      strokeThickness: 5,
-      resolution: 2,
-    });
-    this.titleText.setOrigin(0.5, 0.5);
+    // 3. Logo Game Sử Thi (title_bg.png) - Đặt ở phần trên (Top Header)
+    const titleY = Math.max(90, Math.min(height * 0.20, 160));
+    if (this.textures.exists('title_bg')) {
+      this.titleLogo = this.add.image(centerX, titleY, 'title_bg');
+      this.titleLogo.setOrigin(0.5, 0.5);
+      this.resizeTitleLogo(width, height);
 
-    this.subtitleText = this.add.text(centerX, centerY - 138, 'ASTRAEA ONLINE · DƯ ÂM KHỞI NGUYÊN', {
-      fontFamily: 'Grenze, Outfit, sans-serif',
-      fontSize: '13px',
-      fontStyle: 'bold',
-      color: '#38bdf8',
-      letterSpacing: 4,
-      resolution: 2,
-    });
-    this.subtitleText.setOrigin(0.5, 0.5);
+      // Hiệu ứng thở nhẹ nhàng, sang trọng
+      this.tweens.add({
+        targets: this.titleLogo,
+        alpha: { from: 0.92, to: 1.0 },
+        duration: 2600,
+        yoyo: true,
+        repeat: -1,
+        ease: 'Sine.easeInOut',
+      });
+    }
 
-    // 4. Vòng tròn ma pháp Cổ Thư xoay độc lập ở trung tâm thị giác (không bị text đè lên)
-    this.createMagicCircleTexture();
-    this.magicCircleImage = this.add.image(centerX, centerY - 25, 'magic_seal');
-    this.magicCircleImage.setScale(0.45);
-    this.magicCircleImage.setAlpha(0.65);
-
-    // Xoay tròn liên tục
-    this.tweens.add({
-      targets: this.magicCircleImage,
-      angle: 360,
-      duration: 35000,
-      repeat: -1,
-      ease: 'Linear',
-    });
-
-    // Nhịp thở phát sáng ma pháp
-    this.tweens.add({
-      targets: this.magicCircleImage,
-      alpha: { from: 0.5, to: 0.85 },
-      scale: { from: 0.44, to: 0.47 },
-      duration: 2200,
-      yoyo: true,
-      repeat: -1,
-      ease: 'Sine.easeInOut',
-    });
-
-    // 5. Khung thanh tiến trình nạp (Loading Bar Frame)
-    const barY = centerY + 115;
-    this.progressBarWidth = Math.min(380, width * 0.85);
+    // 4. Khung thanh tiến trình nạp (Loading Bar Frame) - Thanh mảnh quý phái 6px (Option A)
+    const barY = Math.max(height - 100, height * 0.85);
+    this.progressBarWidth = Math.min(420, width * 0.85);
 
     this.progressBg = this.add.graphics();
-    this.progressBg.fillStyle(0x0f172a, 0.85);
+    this.progressBg.fillStyle(0x090d16, 0.85);
     this.progressBg.fillRoundedRect(
-      centerX - this.progressBarWidth / 2 - 3,
-      barY - 3,
-      this.progressBarWidth + 6,
-      this.progressBarHeight + 6,
-      8
+      centerX - this.progressBarWidth / 2 - 2,
+      barY - 2,
+      this.progressBarWidth + 4,
+      this.progressBarHeight + 4,
+      3
     );
-    this.progressBg.lineStyle(1.5, 0xfbbf24, 0.6);
+    this.progressBg.lineStyle(1, 0xd97706, 0.45);
     this.progressBg.strokeRoundedRect(
-      centerX - this.progressBarWidth / 2 - 3,
-      barY - 3,
-      this.progressBarWidth + 6,
-      this.progressBarHeight + 6,
-      8
+      centerX - this.progressBarWidth / 2 - 2,
+      barY - 2,
+      this.progressBarWidth + 4,
+      this.progressBarHeight + 4,
+      3
     );
 
     this.progressBarFill = this.add.graphics();
     this.progressGlow = this.add.graphics();
 
-    // 6. Text trạng thái tiến trình (cách đáy vòng tròn ma pháp 20px)
+    // 5. Text trạng thái tiến trình (nằm ngay trên thanh loading)
     this.phaseText = this.add.text(
       centerX,
-      barY - 22,
+      barY - 20,
       '[1/5] Khởi tạo cấu hình hệ thống & WebGL 2.5D Engine...',
       {
-        fontFamily: 'Grenze, Outfit, sans-serif',
-        fontSize: '13px',
-        color: '#e2e8f0',
+        fontFamily: 'Spectral, Georgia, serif',
+        fontSize: '13.5px',
+        color: '#ffffff',
+        stroke: '#000000',
+        strokeThickness: 3.5,
         resolution: 2,
       }
     );
     this.phaseText.setOrigin(0.5, 0.5);
 
-    this.percentText = this.add.text(centerX, barY + 24, '0%', {
+    this.percentText = this.add.text(centerX, barY + 18, '0%', {
       fontFamily: 'Chakra Petch, Outfit, sans-serif',
-      fontSize: '13px',
+      fontSize: '12.5px',
       fontStyle: 'bold',
       color: '#fbbf24',
+      stroke: '#000000',
+      strokeThickness: 3,
       resolution: 2,
     });
     this.percentText.setOrigin(0.5, 0.5);
 
-    // 7. Mẹo chơi game & Cốt truyện (Tips Carousel)
-    this.tipText = this.add.text(centerX, barY + 60, LORE_TIPS[0], {
-      fontFamily: 'Grenze, Outfit, sans-serif',
-      fontSize: '12.5px',
-      color: '#94a3b8',
+    // 6. Mẹo chơi game & Cốt truyện (Tips Carousel)
+    this.tipText = this.add.text(centerX, barY + 46, LORE_TIPS[0], {
+      fontFamily: 'Spectral, Georgia, serif',
+      fontSize: '13px',
+      color: '#e2e8f0',
+      stroke: '#000000',
+      strokeThickness: 3,
       align: 'center',
-      wordWrap: { width: Math.min(480, width * 0.9) },
+      wordWrap: { width: Math.min(520, width * 0.9) },
       resolution: 2,
     });
     this.tipText.setOrigin(0.5, 0.5);
@@ -291,71 +257,17 @@ export class PreloadScene extends Phaser.Scene {
     this.scale.on('resize', this.handleResize, this);
   }
 
-  private createMagicCircleTexture(): void {
-    if (this.textures.exists('magic_seal')) return;
+  private resizeTitleLogo(width: number, height: number): void {
+    if (!this.titleLogo || !this.titleLogo.texture) return;
+    const centerX = width / 2;
+    const titleY = Math.max(90, Math.min(height * 0.20, 160));
+    this.titleLogo.setPosition(centerX, titleY);
 
-    // Canvas kích thước 480x480 (HiDPI 2x) cho nét vẽ siêu sắc sảo
-    const canvas = document.createElement('canvas');
-    canvas.width = 480;
-    canvas.height = 480;
-    const ctx = canvas.getContext('2d')!;
-    const c = 240;
-
-    // Vòng tròn ngoài
-    ctx.strokeStyle = '#38bdf8';
-    ctx.lineWidth = 5;
-    ctx.beginPath();
-    ctx.arc(c, c, 210, 0, Math.PI * 2);
-    ctx.stroke();
-
-    // Vòng tròn hoa văn bên trong
-    ctx.strokeStyle = '#fbbf24';
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.arc(c, c, 184, 0, Math.PI * 2);
-    ctx.stroke();
-
-    // Ngôi sao đa giác ma pháp (Tam giác kép 6 cánh / Hexagram)
-    ctx.strokeStyle = 'rgba(56, 189, 248, 0.7)';
-    ctx.lineWidth = 3;
-
-    // Tam giác 1
-    ctx.beginPath();
-    for (let i = 0; i < 3; i++) {
-      const angle = (i * 120 - 90) * (Math.PI / 180);
-      const x = c + Math.cos(angle) * 170;
-      const y = c + Math.sin(angle) * 170;
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    }
-    ctx.closePath();
-    ctx.stroke();
-
-    // Tam giác 2
-    ctx.beginPath();
-    for (let i = 0; i < 3; i++) {
-      const angle = (i * 120 + 90) * (Math.PI / 180);
-      const x = c + Math.cos(angle) * 170;
-      const y = c + Math.sin(angle) * 170;
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    }
-    ctx.closePath();
-    ctx.stroke();
-
-    // Vòng tâm phát sáng
-    ctx.fillStyle = 'rgba(251, 191, 36, 0.2)';
-    ctx.beginPath();
-    ctx.arc(c, c, 70, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.strokeStyle = '#fbbf24';
-    ctx.lineWidth = 4;
-    ctx.beginPath();
-    ctx.arc(c, c, 70, 0, Math.PI * 2);
-    ctx.stroke();
-
-    this.textures.addCanvas('magic_seal', canvas);
+    // Responsive: Scale logo vừa vặn trên cả màn hình điện thoại và PC
+    const maxLogoWidth = Math.min(width * 0.85, 520);
+    const maxLogoHeight = height * 0.26;
+    const scale = Math.min(1.0, maxLogoWidth / this.titleLogo.width, maxLogoHeight / this.titleLogo.height);
+    this.titleLogo.setScale(scale);
   }
 
   update(_time: number, delta: number): void {
@@ -389,14 +301,15 @@ export class PreloadScene extends Phaser.Scene {
       this.phaseText.setColor('#4ade80');
       this.percentText.setText('100%');
 
-      // Vòng tròn ma pháp bùng sáng huy hoàng và xoay nhanh nhẹ
-      this.tweens.add({
-        targets: this.magicCircleImage,
-        alpha: 1,
-        scale: 0.52,
-        duration: 350,
-        ease: 'Sine.easeOut',
-      });
+      // Logo bừng sáng nhẹ khi hoàn tất
+      if (this.titleLogo) {
+        this.tweens.add({
+          targets: this.titleLogo,
+          scale: this.titleLogo.scaleX * 1.03,
+          duration: 350,
+          ease: 'Sine.easeOut',
+        });
+      }
 
       // Tự động vào game mượt mà sau 350ms
       this.time.delayedCall(350, () => {
@@ -423,21 +336,21 @@ export class PreloadScene extends Phaser.Scene {
   }
 
   private updateProgressBarUI(): void {
-    const { width } = this.scale;
+    const { width, height } = this.scale;
     const centerX = width / 2;
-    const barY = this.scale.height / 2 + 115;
+    const barY = Math.max(height - 100, height * 0.85);
     const fillW = Math.max(0, this.progressBarWidth * this.currentProgress);
 
     this.progressBarFill.clear();
     if (fillW > 0) {
-      // Gradient từ xanh lam sang vàng hổ phách
-      this.progressBarFill.fillGradientStyle(0x0284c7, 0x38bdf8, 0xfbbf24, 0xf59e0b, 1);
+      // Đơn sắc Vàng Hoàng Kim (Sacred Gold) chuẩn Gacha Fantasy
+      this.progressBarFill.fillStyle(0xfbbf24, 1);
       this.progressBarFill.fillRoundedRect(
         centerX - this.progressBarWidth / 2,
         barY,
         fillW,
         this.progressBarHeight,
-        6
+        2
       );
     }
 
@@ -469,43 +382,34 @@ export class PreloadScene extends Phaser.Scene {
     const centerX = width / 2;
     const centerY = height / 2;
 
-    // Co giãn ảnh nền và overlay theo kích thước mới
     this.resizeBgImage(width, height);
-    if (this.darkOverlay) {
-      this.darkOverlay.clear();
-      this.darkOverlay.fillStyle(0x04060d, 0.4);
-      this.darkOverlay.fillRect(0, 0, width, height);
-    }
+    this.resizeTitleLogo(width, height);
 
-    if (this.magicCircleImage) this.magicCircleImage.setPosition(centerX, centerY - 25);
-    if (this.titleText) this.titleText.setPosition(centerX, centerY - 175);
-    if (this.subtitleText) this.subtitleText.setPosition(centerX, centerY - 138);
-
-    const barY = centerY + 115;
-    this.progressBarWidth = Math.min(380, gameSize.width * 0.85);
+    const barY = Math.max(height - 100, height * 0.85);
+    this.progressBarWidth = Math.min(420, gameSize.width * 0.85);
 
     if (this.progressBg) {
       this.progressBg.clear();
-      this.progressBg.fillStyle(0x0f172a, 0.85);
+      this.progressBg.fillStyle(0x090d16, 0.85);
       this.progressBg.fillRoundedRect(
-        centerX - this.progressBarWidth / 2 - 3,
-        barY - 3,
-        this.progressBarWidth + 6,
-        this.progressBarHeight + 6,
-        8
+        centerX - this.progressBarWidth / 2 - 2,
+        barY - 2,
+        this.progressBarWidth + 4,
+        this.progressBarHeight + 4,
+        3
       );
-      this.progressBg.lineStyle(1.5, 0xfbbf24, 0.6);
+      this.progressBg.lineStyle(1, 0xd97706, 0.45);
       this.progressBg.strokeRoundedRect(
-        centerX - this.progressBarWidth / 2 - 3,
-        barY - 3,
-        this.progressBarWidth + 6,
-        this.progressBarHeight + 6,
-        8
+        centerX - this.progressBarWidth / 2 - 2,
+        barY - 2,
+        this.progressBarWidth + 4,
+        this.progressBarHeight + 4,
+        3
       );
     }
 
-    if (this.phaseText) this.phaseText.setPosition(centerX, barY - 22);
-    if (this.percentText) this.percentText.setPosition(centerX, barY + 24);
-    if (this.tipText) this.tipText.setPosition(centerX, barY + 60);
+    if (this.phaseText) this.phaseText.setPosition(centerX, barY - 20);
+    if (this.percentText) this.percentText.setPosition(centerX, barY + 18);
+    if (this.tipText) this.tipText.setPosition(centerX, barY + 46);
   }
 }

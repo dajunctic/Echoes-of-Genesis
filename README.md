@@ -43,10 +43,10 @@
    - Hiển thị trực tiếp: Tọa độ nhân vật $(x, y)$, Hướng quay mặt, Độ trễ mạng (Ping ms), Tốc độ khung hình (FPS), Số lượng người chơi đang Online.
    - Khung chat trực tiếp gõ Enter gửi tin nhắn tức thời toàn phòng.
 6. **Màn Hình Load Game Sử Thi (Cinematic Preload Scene):**
-   - Vòng tròn ma pháp Cổ Thư (Grimoire Seal) xoay phát sáng nhịp thở huyền bí giữa các chòm sao.
+   - Logo game sử thi `title_bg` (ECHOES OF GENESIS - DƯ ÂM KHỞI NGUYÊN) với vầng hào quang vương miện gai, hiệu ứng thở trang nhã và tự động co giãn đa màn hình (Responsive).
    - Thanh tiến trình nạp 5 Giai đoạn mượt mà (System Config -> Grimoire Master Data -> Flare Game Asset Preload -> Channel 1 Room -> Enter World).
    - Vòng quay mẹo chơi game & trích đoạn sử thi biến cố Đại Sụp Đổ tự động đổi sau mỗi 3.5s.
-   - Nút tương tác vàng kim "⚡ TIẾN VÀO ĐẠI LỤC ASTRAEA" với hiệu ứng Camera Fade-Out.
+   - Chuyển cảnh điện ảnh mượt mà vào thế giới game với hiệu ứng Camera Fade-Out.
 7. **Tích hợp Tài Nguyên Đồ Họa Flare Game & Thanh Kỹ Năng (Action Hotbar):**
    - Script tự động tải bộ Tileset cỏ/ngục tối, Icons trang bị và Monster Sprites từ GitHub `flareteam/flare-game`.
    - Bù nhìn quái vật Skeleton đứng dã ngoại trong làng, có thanh máu đỏ và hiệu ứng chém trúng giật lùi kèm Floating Text `-25 HP`.

@@ -252,8 +252,8 @@ export class GameScene extends Phaser.Scene {
 
     // Tên nhân vật (đặt cao hơn trên đỉnh đầu để không bị dính vào tóc)
     this.playerNameText = this.add.text(0, -78, 'Hiệp Sĩ Khởi Nguyên', {
-      fontFamily: '"Grenze", Georgia, serif',
-      fontSize: '13px',
+      fontFamily: '"Spectral", Georgia, serif',
+      fontSize: '13.5px',
       fontStyle: 'bold',
       color: '#fbbf24',
       stroke: '#000000',
@@ -302,8 +302,8 @@ export class GameScene extends Phaser.Scene {
 
       // Tên quái vật
       const nameText = this.add.text(0, -48, `${def.name} (Lv.${def.level})`, {
-        fontFamily: '"Grenze", Georgia, serif',
-        fontSize: '12px',
+        fontFamily: '"Spectral", Georgia, serif',
+        fontSize: '12.5px',
         fontStyle: 'bold',
         color: '#f87171',
         stroke: '#000000',
@@ -832,8 +832,8 @@ export class GameScene extends Phaser.Scene {
       }
 
       const nameText = this.add.text(0, -78, p.name, {
-        fontFamily: '"Grenze", Georgia, serif',
-        fontSize: '13px',
+        fontFamily: '"Spectral", Georgia, serif',
+        fontSize: '13.5px',
         fontStyle: 'bold',
         color: '#e2e8f0',
         stroke: '#000000',

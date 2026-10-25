@@ -7,14 +7,14 @@
 
 ## PHẦN 1: HỆ THỐNG TYPOGRAPHY CHUẨN DARK FANTASY (FULL VIETNAMESE)
 
-Nhằm xóa bỏ cảm giác "phèn" của các font sans-serif tròn trịa hiện đại thông thường (như Arial, Roboto hay Outfit), toàn bộ hệ thống chữ của game được chuyển đổi sang bộ tam font Dark Fantasy cao cấp, hỗ trợ 100% tiếng Việt có dấu trực tiếp từ Google Fonts.
+Nhằm mang lại trải nghiệm đậm chất Dark Fantasy quý phái, kết hợp phong cách Gacha/RPG sử thi hiện đại (như Genshin Impact, Fate/Grand Order, Reverse: 1999), toàn bộ hệ thống chữ của game sử dụng font **`Spectral`** (thiết kế bởi Production Type cho Google Fonts) kết hợp font số chiến đấu **`Chakra Petch`**, hỗ trợ 100% tiếng Việt có dấu cực kỳ chuẩn xác và thanh nhã.
 
-### 1. Phân cấp 3 Font chữ chủ lực (The Trinity Font System)
+### 1. Phân cấp Font chữ chủ lực (The Font System)
 
 | Font chữ | Nhóm phân loại | Vai trò trong Game | Đặc điểm thẩm mỹ |
 | :--- | :--- | :--- | :--- |
-| **`Grenze Gotisch`** | Blackletter / Gothic Display | **Tiêu đề lớn, Tên Boss, Tên quái vật mục tiêu, Tên bản đồ (Minimap)** | Nét chữ Gothic thời Trung Cổ, vát cạnh sắc nhọn ma mị, gợi cảm giác *Diablo* và ngục tối cổ xưa. |
-| **`Grenze`** | Hybrid Roman-Gothic | **Tên nhân vật (Nameplate), Tên quái dã ngoại, Lời thoại NPC, Mô tả Cổ Thư** | Giữ phong thái ma mị của Gothic nhưng nét chữ thẳng và thanh thoát hơn, tối ưu để đọc cực rõ ở cỡ nhỏ (11-13px) trên đầu nhân vật. |
+| **`Spectral`** | Noble Fantasy Serif | **Toàn bộ UI, Tên nhân vật, Tên quái vật, Tên bản đồ, Thanh Loading, Lời thoại NPC, Thẻ Gacha** | Phong cách Serif quý tộc, thanh thoát, đĩnh đạc; cực kỳ hợp với hệ thống Gacha thẻ bài, cổ thư và đối thoại sử thi; hỗ trợ trọn vẹn bộ dấu tiếng Việt không bị lỗi font hay phèn. |
+| **`Cinzel`** | Classical Roman Display | **Tiêu đề lớn đặc biệt, Logo phụ** | Mang hơi hướng khắc đá La Mã cổ đại uy nghiêm. |
 | **`Chakra Petch`** | Sharp Angular Display | **Số sát thương nhảy (Damage Popups), Chỉ số HP/MP, Phím tắt Action Dock, Ping/FPS** | Nét vát 45 độ sắc bén, lạnh lùng, tốc độ đọc tức thì trong các pha combat dồn dập, bạo kích. |
 
 ---
@@ -22,20 +22,20 @@ Nhằm xóa bỏ cảm giác "phèn" của các font sans-serif tròn trịa hi�
 ### 2. Thông số thiết kế & Render In-Game
 
 1. **Bảng tên nhân vật (Player Nameplate):**
-   - Font: `'Grenze', Georgia, serif`
-   - Cỡ chữ: `13px bold`
+   - Font: `'Spectral', Georgia, serif`
+   - Cỡ chữ: `13.5px bold`
    - Màu sắc: `#fbbf24` (Vàng hoàng kim với viền đen `stroke: #000000`, độ dày viền `3.5px`).
    - Tọa độ: `(0, -78px)` tính từ chân nhân vật, tạo khoảng đệm thoáng đãng trên đỉnh đầu.
 2. **Bảng tên quái vật dã ngoại (Monster Nameplate):**
-   - Font: `'Grenze', Georgia, serif`
-   - Cỡ chữ: `12px bold`
+   - Font: `'Spectral', Georgia, serif`
+   - Cỡ chữ: `12.5px bold`
    - Màu sắc: `#f87171` (Đỏ thẫm viền đen `3.5px`).
 3. **Số sát thương chiến đấu (Floating Combat Text):**
    - Font: `'Chakra Petch', sans-serif`
    - Cỡ chữ: `15px bold`
    - Hiệu ứng: Bay lên `y - 35px`, mờ dần theo hàm mũ `Power2` trong 800ms.
 4. **Khung mục tiêu quái vật (Target Frame - Top Center):**
-   - Tên quái: `'Grenze Gotisch', serif`, cỡ `16px bold`, dãn chữ `0.5px`, màu đỏ hồng `#fca5a5`.
+   - Tên quái: `'Spectral', Georgia, serif`, cỡ `16px bold`, dãn chữ `0.5px`, màu đỏ hồng `#fca5a5`.
 5. **Thanh kỹ năng (Action Dock - Bottom Center):**
    - Phím tắt (1..6, Q, W, E): `'Chakra Petch', sans-serif`, cỡ `11px bold`, màu vàng `#fbbf24`.
 
