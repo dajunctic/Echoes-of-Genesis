@@ -1,0 +1,19 @@
+{
+  "name": "@eog/client",
+  "version": "0.1.0",
+  "description": "2.5D Isometric HTML5 Client using Phaser 3 and TypeScript",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host --port 3000",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@eog/shared": "*",
+    "phaser": "^3.80.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11"
+  }
+}
