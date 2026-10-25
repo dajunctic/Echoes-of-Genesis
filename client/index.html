@@ -285,6 +285,18 @@
       gap: 5px;
       width: min(300px, 85vw);
     }
+    @media (max-width: 640px) {
+      .hud-bottom-right {
+        bottom: 175px;
+        left: 14px;
+        right: auto;
+        width: 200px;
+        opacity: 0.85;
+      }
+      .hud-bottom-right:focus-within {
+        opacity: 1;
+      }
+    }
     .chat-logs {
       max-height: 85px;
       overflow-y: auto;

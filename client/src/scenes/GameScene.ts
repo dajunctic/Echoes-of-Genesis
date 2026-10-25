@@ -47,6 +47,7 @@ export class GameScene extends Phaser.Scene {
   private playerSpeed: number = 4.2;
   private currentDirection: Direction8 = 'S';
   private currentAnimState: ActionState = 'idle';
+  private isAttacking: boolean = false;
 
   private playerHp: number = 120;
   private playerMaxHp: number = 120;
@@ -148,16 +149,11 @@ export class GameScene extends Phaser.Scene {
         const { isoX, isoY } = cartesianToIso(x, y);
 
         const isRoad = Math.abs(x - y) <= 2 || (x >= 12 && x <= 16 && y >= 6 && y <= 22);
-        const isCliff = x <= 3;
 
         let tileImg: Phaser.GameObjects.Image;
 
         if (hasFlareTiles) {
-          if (isCliff) {
-            tileImg = this.add.image(isoX, isoY - 20, 'flare_tileset_grass', 'flare_cliff_56');
-            tileImg.setScale(0.5);
-            tileImg.setOrigin(0.5, 0.7);
-          } else if (isRoad) {
+          if (isRoad) {
             const frame = roadFrames[(x * 3 + y * 5) % roadFrames.length];
             tileImg = this.add.image(isoX, isoY, 'flare_tileset_grass', frame);
             tileImg.setScale(0.5);
@@ -358,7 +354,21 @@ export class GameScene extends Phaser.Scene {
   }
 
   private attackTargetMonster(mob: MonsterEntity): void {
-    this.moveTarget = { x: mob.x - 0.7, y: mob.y };
+    // Quay mặt chính xác về phía quái vật trên màn hình và xuất chiêu
+    const mobIso = cartesianToIso(mob.x, mob.y);
+    const playerIso = cartesianToIso(this.playerX, this.playerY);
+    const dir = vectorToDirection8(mobIso.isoX - playerIso.isoX, mobIso.isoY - playerIso.isoY);
+    this.currentDirection = dir;
+
+    const attackAnimKey = `anim_hero_attack_${dir}`;
+    if (this.anims.exists(attackAnimKey)) {
+      this.isAttacking = true;
+      this.playerSprite.play(attackAnimKey, true);
+      this.playerSprite.once('animationcomplete', () => {
+        this.isAttacking = false;
+        this.setPlayerState(this.currentAnimState, this.currentDirection);
+      });
+    }
 
     this.time.delayedCall(300, () => {
       const dmg = Phaser.Math.Between(26, 42);
@@ -455,31 +465,7 @@ export class GameScene extends Phaser.Scene {
   }
 
   private setupPointerInput(): void {
-    this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
-      if (pointer.rightButtonDown() || (!pointer.wasTouch && pointer.leftButtonDown())) {
-        const { cartX, cartY } = isoToCartesian(pointer.worldX, pointer.worldY);
-        const clampedX = Phaser.Math.Clamp(cartX, 1, this.MAP_SIZE - 2);
-        const clampedY = Phaser.Math.Clamp(cartY, 1, this.MAP_SIZE - 2);
-
-        this.moveTarget = { x: clampedX, y: clampedY };
-
-        const targetIso = cartesianToIso(clampedX, clampedY);
-        this.targetMarkerSprite.setPosition(targetIso.isoX, targetIso.isoY);
-        this.targetMarkerSprite.setVisible(true);
-
-        this.tweens.killTweensOf(this.targetMarkerSprite);
-        this.targetMarkerSprite.setScale(0.7);
-        this.targetMarkerSprite.setAlpha(1);
-        this.tweens.add({
-          targets: this.targetMarkerSprite,
-          scale: 1.15,
-          alpha: 0.65,
-          duration: 350,
-          yoyo: true,
-          repeat: -1,
-        });
-      }
-    });
+    // Đã vô hiệu hóa click chuột / chạm vào mặt đất để di chuyển theo yêu cầu
   }
 
   public castSkill(slot: number): void {
@@ -488,15 +474,18 @@ export class GameScene extends Phaser.Scene {
     switch (slot) {
       case 1: {
         this.showFloatingText(isoX, isoY - 40, '⚔️ Trảm Thần Kiếm!', '#fbbf24');
-        const attackAnimKey = `anim_hero_attack_${this.currentDirection}`;
-        if (this.anims.exists(attackAnimKey)) {
-          this.playerSprite.play(attackAnimKey);
-          this.playerSprite.once('animationcomplete', () => {
-            this.playerSprite.play(`anim_hero_${this.currentAnimState}_${this.currentDirection}`);
-          });
-        }
         if (this.currentTargetMonster) {
           this.attackTargetMonster(this.currentTargetMonster);
+        } else {
+          const attackAnimKey = `anim_hero_attack_${this.currentDirection}`;
+          if (this.anims.exists(attackAnimKey)) {
+            this.isAttacking = true;
+            this.playerSprite.play(attackAnimKey, true);
+            this.playerSprite.once('animationcomplete', () => {
+              this.isAttacking = false;
+              this.setPlayerState(this.currentAnimState, this.currentDirection);
+            });
+          }
         }
         break;
       }
@@ -653,49 +642,37 @@ export class GameScene extends Phaser.Scene {
     if (this.joystick && this.joystick.isDown) {
       moveDx = this.joystick.vector.x;
       moveDy = this.joystick.vector.y;
-      this.moveTarget = null;
-      this.targetMarkerSprite.setVisible(false);
     }
 
-    if (Math.abs(moveDx) > 0.05 || Math.abs(moveDy) > 0.05) {
-      this.moveTarget = null;
-      this.targetMarkerSprite.setVisible(false);
+    const moveLen = Math.hypot(moveDx, moveDy);
+    if (moveLen > 0.05) {
+      if (this.isAttacking) {
+        this.isAttacking = false;
+        this.playerSprite.off('animationcomplete');
+      }
 
-      const length = Math.hypot(moveDx, moveDy);
-      const normX = moveDx / length;
-      const normY = moveDy / length;
+      const normScreenX = moveDx / moveLen;
+      const normScreenY = moveDy / moveLen;
 
-      this.playerX += normX * this.playerSpeed * dt;
-      this.playerY += normY * this.playerSpeed * dt;
+      // Chuyển đổi vector màn hình (Screen Space) sang lưới Isometric logic (Cartesian Grid)
+      // Giúp: Đẩy cần LÊN -> Nhân vật chạy THẲNG LÊN trên màn hình
+      //       Đẩy cần XUỐNG -> chạy THẲNG XUỐNG
+      //       Đẩy cần SANG TRÁI / PHẢI -> chạy THẲNG TRÁI / PHẢI
+      // Triệt tiêu hoàn toàn hiện tượng bị lệch chéo 45 độ do hệ trục Isometric 2.5D
+      const { cartX: gridDx, cartY: gridDy } = isoToCartesian(normScreenX * 48, normScreenY * 24);
 
-      this.playerX = Phaser.Math.Clamp(this.playerX, 4.2, this.MAP_SIZE - 2);
+      this.playerX += gridDx * this.playerSpeed * dt;
+      this.playerY += gridDy * this.playerSpeed * dt;
+
+      this.playerX = Phaser.Math.Clamp(this.playerX, 2, this.MAP_SIZE - 2);
       this.playerY = Phaser.Math.Clamp(this.playerY, 2, this.MAP_SIZE - 2);
 
-      const newDir = vectorToDirection8(normX, normY);
+      const newDir = vectorToDirection8(normScreenX, normScreenY);
       this.setPlayerState('walk', newDir);
-    } else if (this.moveTarget) {
-      const diffX = this.moveTarget.x - this.playerX;
-      const diffY = this.moveTarget.y - this.playerY;
-      const dist = Math.hypot(diffX, diffY);
-
-      if (dist > 0.15) {
-        const normX = diffX / dist;
-        const normY = diffY / dist;
-
-        this.playerX += normX * this.playerSpeed * dt;
-        this.playerY += normY * this.playerSpeed * dt;
-
-        const newDir = vectorToDirection8(normX, normY);
-        this.setPlayerState('walk', newDir);
-      } else {
-        this.playerX = this.moveTarget.x;
-        this.playerY = this.moveTarget.y;
-        this.moveTarget = null;
-        this.targetMarkerSprite.setVisible(false);
+    } else {
+      if (!this.isAttacking) {
         this.setPlayerState('idle', this.currentDirection);
       }
-    } else {
-      this.setPlayerState('idle', this.currentDirection);
     }
 
     const { isoX, isoY } = cartesianToIso(this.playerX, this.playerY);
@@ -704,12 +681,23 @@ export class GameScene extends Phaser.Scene {
   }
 
   private setPlayerState(anim: ActionState, dir: Direction8): void {
-    if (this.currentAnimState !== anim || this.currentDirection !== dir) {
-      this.currentAnimState = anim;
-      this.currentDirection = dir;
-      const animKey = `anim_hero_${anim}_${dir}`;
-      if (this.playerSprite.anims.currentAnim?.key !== animKey) {
-        this.playerSprite.play(animKey);
+    const animKey = `anim_hero_${anim}_${dir}`;
+    const currentKey = this.playerSprite?.anims?.currentAnim?.key;
+    const isPlaying = this.playerSprite?.anims?.isPlaying;
+
+    this.currentAnimState = anim;
+    this.currentDirection = dir;
+
+    if (!this.playerSprite || !this.playerSprite.anims) return;
+
+    if (currentKey !== animKey || !isPlaying) {
+      if (this.anims.exists(animKey)) {
+        this.playerSprite.play(animKey, true);
+      } else {
+        const fallbackKey = `anim_hero_${anim}_S`;
+        if (this.anims.exists(fallbackKey)) {
+          this.playerSprite.play(fallbackKey, true);
+        }
       }
     }
   }
@@ -872,8 +860,10 @@ export class GameScene extends Phaser.Scene {
       visual.container.setDepth(calculateZDepth(visual.data.x, visual.data.y, 20));
 
       const targetAnimKey = `anim_hero_${visual.data.animState}_${visual.data.direction}`;
-      if (visual.sprite.anims.currentAnim?.key !== targetAnimKey) {
-        visual.sprite.play(targetAnimKey);
+      if (visual.sprite.anims.currentAnim?.key !== targetAnimKey || !visual.sprite.anims.isPlaying) {
+        if (this.anims.exists(targetAnimKey)) {
+          visual.sprite.play(targetAnimKey, true);
+        }
       }
     });
   }
