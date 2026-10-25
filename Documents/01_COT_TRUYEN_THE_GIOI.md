@@ -1,144 +1,145 @@
 # TÀI LIỆU CỐT TRUYỆN & THẾ GIỚI QUAN (WORLD LORE)
-**Dự án:** Astraea Online - Cổ Thư Hỗn Mang (The Shattered Grimoire)  
-**Thể loại:** 2.5D Isometric MMORPG Web H5  
-**Phong cách:** Thần thoại huyền huyễn phương Tây pha trộn chất Kiếm hiệp cày cuốc kinh điển (Vibe Võ Lâm / Diablo)  
-**Phiên bản:** 1.0 - Chính thức  
+**Dự án:** Echoes of Genesis (Astraea Online - Cổ Thư Hỗn Mang)  
+**Thể loại:** 2.5D Isometric MMORPG Web H5 kết hợp Squad Battler Gacha Spine 2D  
+**Phong cách:** Siêu hỗn hợp Đông - Tây (Tu Tiên Cảnh Giới, Kiếm Hiệp Ngự Kiếm x Ma Pháp Grimoire, Hiệp Sĩ Giáo Đình)  
+**Phiên bản:** 2.0 - Tích hợp Đột Phá Tu Tiên & Anh Linh Gacha  
 
 ---
 
-## 1. BIÊN NIÊN SỬ ĐẠI LỤC ASTRAEA
+## 1. BIÊN NIÊN SỬ ĐẠI LỤC ASTRAEA & THƯƠNG KHUNG VỰC
 
 ```mermaid
 timeline
-    title Lịch Sử Đại Lục Astraea
-    Kỷ Nguyên Khởi Nguyên : Cổ Thụ Thần Vực đâm chồi : Đại Cổ Thư Genesis ra đời : Khai sinh 6 Dòng Ma Thuật
-    Kỷ Nguyên Ánh Sáng (Năm 0 - 1041) : Thành lập Hội Đồng Tối Cao Pháp Sư : Xây dựng các Đế Chế và Thành Phố
-    Biến Cố Đại Sụp Đổ (Năm 1042) : Vết Nứt Hư Không xuất hiện : Kích nổ Đại Cổ Thư tạo phong ấn : Ma pháp phân tán
-    Thời Đại Hỗn Loạn (Hiện tại) : Quái vật đột biến thành Ma Thú : Kẻ Thức Tỉnh xuất hiện : Tranh đoạt Cổ Thư
+    title Lịch Sử Hỗn Hợp Đông - Tây
+    Kỷ Nguyên Khởi Nguyên : Cổ Thụ Thần Vực đâm chồi : Đại Cổ Thư Genesis ra đời : Khai sinh 6 Nguyên Tố & Linh Mạch
+    Kỷ Nguyên Ánh Sáng (Năm 0 - 1041) : Hội Đồng Pháp Sư Tây Phương : Các Tông Môn Kiếm Tu Đông Phương hưng thịnh
+    Biến Cố Đại Sụp Đổ & Thiên Địa Quy Nhất (Năm 1042) : Vết Nứt Hư Không : Kích nổ Đại Cổ Thư : Xé rách ranh giới 2 thế giới dung hợp
+    Kỷ Nguyên Hỗn Mang (Hiện tại) : Quái vật đột biến Ma Thú : Thức tỉnh Song Tu Ma Đạo - Tiên Đạo : Đài Triệu Hoán Thái Hư
 ```
 
 ### 1.1. Kỷ Nguyên Khởi Nguyên (The Genesis Era)
 Thuở hồng hoang, đại lục **Astraea** chỉ là một cõi hư vô tĩnh mịch. Nguồn sống đầu tiên xuất hiện khi hạt giống thần thoại đâm chồi nảy lộc, tạo nên **Cổ Thụ Thần Vực (The Yggdrasil of Astraea)** khổng lồ cắm rễ sâu vào lòng địa mạch. 
 
-Từ lõi của Cổ Thụ, kết tinh năng lượng thuần khiết nhất đã ngưng tụ thành một cuốn kinh thư duy nhất: **Đại Cổ Thư Khởi Nguyên (The Genesis Grimoire)**. Cuốn sách ghi chép trật tự vận hành của vạn vật thông qua 6 nguyên tố cội nguồn:
-- **Hỏa (Ignis):** Sự nhiệt huyết, hủy diệt và tái sinh.
-- **Băng (Glacies):** Sự tĩnh lặng, bảo tồn và vĩnh cửu.
-- **Lôi (Fulgur):** Sự phán quyết, xung kích và biến đổi tức thời.
-- **Độc (Venom):** Sự ăn mòn, mục rữa và chuyển hóa tuần hoàn.
-- **Quang (Lux):** Sự che chở, thanh tẩy và chữa lành.
-- **Ám (Umbra):** Chiều sâu tâm thức, ảo vọng và hư không kiềm hãm.
+Từ lõi của Cổ Thụ, kết tinh năng lượng thuần khiết nhất đã ngưng tụ thành một cuốn kinh thư duy nhất: **Đại Cổ Thư Khởi Nguyên (The Genesis Grimoire)**. Cuốn sách ghi chép trật tự vận hành của vạn vật thông qua 6 nguyên tố cội nguồn (đồng thời tương ứng với 6 loại Linh Căn Tu Tiên):
+- **Hỏa (Ignis / Hỏa Linh Căn):** Sự nhiệt huyết, hủy diệt và tái sinh.
+- **Băng (Glacies / Băng Linh Căn):** Sự tĩnh lặng, bảo tồn và vĩnh cửu.
+- **Lôi (Fulgur / Lôi Linh Căn):** Sự phán quyết, lôi kiếp và xung kích biến đổi tức thời.
+- **Độc (Venom / Hủ Độc Linh Căn):** Sự ăn mòn, mục rữa và chuyển hóa tuần hoàn.
+- **Quang (Lux / Thánh Quang Linh Căn):** Sự che chở, thanh tẩy và chữa lành.
+- **Ám (Umbra / Ma Linh Căn):** Chiều sâu tâm thức, ảo vọng và hư không kiềm hãm.
 
-### 1.2. Biến Cố Đại Sụp Đổ (The Great Shattering - Năm 1042)
+### 1.2. Biến Cố Đại Sụp Đổ & "Thiên Địa Quy Nhất" (The Convergence - Năm 1042)
 Năm 1042 Kỷ Nguyên Ánh Sáng, một dị tượng chưa từng có xảy ra: bầu trời phía Bắc đại lục rách toạc ra một vết rách đen ngòm sâu thẳm mang tên **Vết Nứt Hư Không (The Void Rift)**. Khí Hỗn Mang tràn ngập, những thực thể tà ác từ ngoài chiều không gian túa ra tàn sát cư dân.
 
 Trước nguy cơ toàn bộ sự sống bị diệt vong, 7 Đại Trưởng Lão thuộc **Hội Đồng Pháp Sư Astraea** đã đưa ra quyết định liều mạng nhất lịch sử: **Hiến tế sinh mệnh để kích nổ Đại Cổ Thư Khởi Nguyên**, mượn vụ nổ năng lượng tối thượng tạo thành Đại Phong Ấn vĩnh cửu nhốt chặt Vết Nứt Hư Không.
 
-Vụ nổ thành công ngăn chặn quân đoàn Hư Không, nhưng cái giá phải trả vô cùng đắt:
-- Cổ Thụ Thần Vực nứt toác, nguồn mana thiên nhiên bị biến tính dữ dội.
-- Đại Cổ Thư vỡ vụn thành **hàng triệu Tàn Trang Thần Bí (Grimoire Pages)** và các cuốn **Cổ Thư Biến Dị** bắn tung tóe khắp cùng trời cuối đất.
+Vụ nổ năng lượng vượt tầm kiểm soát đã tạo nên một chấn động không thời gian kinh hoàng mang tên **Thiên Địa Quy Nhất (The Great Convergence)**:
+- Không chỉ xé rách Đại Cổ Thư thành **hàng triệu Tàn Trang Thần Bí (Grimoire Pages)**, vụ nổ còn làm sụp đổ ranh giới không gian, hút xoáy và sáp nhập **Đại lục Astraea (Tây Huyễn)** với **Thương Khung Vực (Đông Phương Tiên Giới)**.
+- **Mana ma pháp** hòa quyện với **Linh khí trời đất** tạo thành nguồn năng lượng mới: **Hỗn Nguyên Khí**. Các môn phái Kiếm Tu, Đạo Môn, Ma Đạo Tu Chân bỗng chốc cùng tồn tại bên cạnh các Hiệp Sĩ Giáo Đình, Pháp Sư Viện và Yêu Tộc Cổ Đại.
+- Tàn trang rơi rụng phong ấn cả hồn phách của các Kiếm Tiên, Ma Tôn, Thánh Nữ và Cổ Thần từ thời viễn cổ, trôi dạt khắp nhân gian chờ ngày được thức tỉnh qua **Đài Triệu Hoán Thái Hư**.
 
 ---
 
-## 2. SINH VẬT MA HÓA & MA THÚ BẠO CHÚA (FIELD BOSSES)
+## 2. BỐN ĐẠI TRẬN DOANH THẾ GIỚI (FACTIONS)
 
-Sau vụ nổ, dòng chảy mana rơi vào hỗn loạn cực độ:
-
-### 2.1. Quái Thường & Thú Dữ Biến Dị
-Những sinh vật hiền lành nhất như Ốc sên, Heo rừng, Nấm rừng... khi ăn phải hoặc hít phải bụi mana từ các Tàn Trang rải rác đã bị đột biến thể xác:
-- Cơ bắp nở lớn, mọc gai xương sừng nhọn hoắt.
-- Trở nên cực kỳ khát máu, tấn công bất cứ con người nào xuất hiện trong tầm mắt.
-- Trong cơ thể chúng kết tụ lại thành các mảnh Tàn Trang rách vụn và Đá Cường Hóa sơ cấp.
-
-### 2.2. Ma Thú Bạo Chúa (Field Bosses & World Bosses)
-Những thủ lĩnh quái vật hoặc hung thú ngàn năm may mắn nuốt trọn được **cả một cuốn Cổ Thư hoàn chỉnh** đã hấp thụ toàn bộ tri thức ma thuật cổ xưa, tiến hóa trí tuệ và sức mạnh lên tầm Bạo Chúa:
-- **Thủ Lĩnh Nấm Tử Thần - Spore King (Cấp 15 - Rừng Sơ Khai):** Nuốt phải Tàn Trang Độc, có khả năng phun bào tử làm mù mắt và thối rữa da thịt.
-- **Ma Lợn Gai Bạo Bệnh - Gorefang (Cấp 25 - Thung Lũng Cỏ Gió):** To lớn như cỗ xe bọc thép, mang sừng Lôi Điện có thể húc văng cả một nhóm hiệp sĩ.
-- **Xà Thần Đầm Lầy - Venom Hydra (Cấp 35 - Đầm Lầy Tử Khí):** Rắn 3 đầu khổng lồ, mỗi đầu bắn ra axit ăn mòn mọi trang bị giáp trụ.
-- **Hỏa Viêm Ma Thần - Ignis Golem (Cấp 48 - Miệng Núi Lửa Tro Tàn):** Sinh vật nham thạch cổ đại thức tỉnh khi nuốt trọn Sách Lửa Thần Thoại.
-- **Bóng Ma Hư Không - Void Herald (Cấp 60 - Cửa Vết Nứt Hư Không):** Kẻ canh gác ranh giới, sở hữu sức mạnh bóp méo không gian và thời gian.
+1. **Tiên Môn Kiếm Tông (Đông Phương Chính Đạo):**
+   * Tụ họp các kiếm tu tu luyện ngự kiếm thuật, rèn luyện đan điền, lấy kiếm đạo nhập tiên đạo.
+   * Lãnh tụ tinh thần: Kiếm Tiên Lý Tiêu Dao.
+2. **Ma Đạo Cổ Tộc (Hắc Ám / Tà Tu):**
+   * Tận dụng khí Hỗn Mang và huyết ma đại pháp để cưỡng cầu đột phá cảnh giới, bất chấp thủ đoạn.
+   * Thủ lĩnh: Cửu U Ma Tôn Diệp Hắc.
+3. **Thần Thánh Giáo Đình (Tây Phương Thánh Điện):**
+   * Tôn thờ Ánh Sáng Khởi Nguyên, đề cao danh dự hiệp sĩ, sử dụng thần chú thánh quang bảo hộ đồng minh.
+   * Người đứng đầu: Thánh Nữ Kỵ Sĩ Jeanne d'Arc.
+4. **Hư Không & Yêu Tộc (Hỗn Mang Thần Tộc):**
+   * Các loài ma thú, tinh linh viễn cổ và rồng thần hấp thụ tàn trang biến hóa thành hình người ma mị.
+   * Biểu tượng: Long Vương Tiamat và Hồ Tiên Cửu Vĩ Bạch Thiển.
 
 ---
 
-## 3. NGƯỜI THỨC TỈNH (THE AWAKENED ONES) & HỆ THỐNG NPC
+## 3. NGƯỜI THỨC TỈNH SONG TU (THE AWAKENED ONES) & HỆ THỐNG NPC
 
-### 3.1. Thân Thế Của Người Chơi
-Người chơi đóng vai những đứa trẻ sinh ra đúng vào thời khắc Đại Sụp Đổ diễn ra. Dòng mana hỗn loạn thẩm thấu vào huyết quản từ lúc lọt lòng, khiến mỗi người đều mang trong linh hồn một **Ấn Ký Nguyên Tố Tiềm Ẩn**.
-
-Khi đạt Cấp 10, người chơi bước chân vào Đền Thần Vực thực hiện nghi thức Thức Tỉnh để khơi thông nguồn năng lượng bẩm sinh này. Từ một thợ săn quái vô danh của Làng Khởi Nguyên, người chơi dấn thân vào hành trình tranh đoạt, săn lùng Cổ Thư, trở thành Đấng Cứu Thế hoặc Kẻ Thống Trị Hỗn Mang.
+### 3.1. Thân Thế Người Chơi: Thiên Mệnh Hỗn Nguyên
+Người chơi sinh ra đúng vào thời khắc hai thế giới sáp nhập. Sở hữu huyết mạch kỳ dị vừa có đan điền tu chân tụ khí, vừa có khả năng cảm ứng Ma Thư Grimoire. Người chơi là **"Kẻ Song Tu Hỗn Nguyên"** duy nhất có thể vừa vung bảo kiếm thi triển kiếm khí, vừa niệm ma pháp hủy diệt, đồng thời câu thông linh hồn qua Đài Triệu Hoán Thái Hư để hiệu triệu vạn tướng.
 
 ### 3.2. Dàn NPC Trọng Yếu Tại Thành Phố & Dã Ngoại
 
 ```mermaid
 graph TD
-    Player[Người Chơi / Kẻ Thức Tỉnh] -->|Nhận NV Cấp 10| Elder[Trưởng Lão Vane - Làng Khởi Nguyên]
-    Player -->|Rèn & Cường Hóa +15| Smith[Thợ Rèn Độc Nhãn - Vulcan]
-    Player -->|Tẩy Hệ & Reset Cây Sách| Shaman[Đạo Sĩ Tẩy Mệnh - Tôn Lão Nhược]
-    Player -->|Mua Bùa May Mắn / Bình HP| Alchemist[Dược Sĩ Quái Dị - Miria]
-    Player -->|Giao Dịch / Thu Thuế Bang| Master[Chủ Chợ Trời - Bá Tước Silas]
+    Player[Kẻ Thức Tỉnh Song Tu] -->|Thức Tỉnh Cấp 10| Elder[Trưởng Lão Vane - Làng Khởi Nguyên]
+    Player -->|Cường Hóa +15 & Luyện Đan| Smith[Thợ Rèn Độc Nhãn Vulcan]
+    Player -->|Triệu Hoán Gacha & Tẩy Mệnh| Shaman[Đạo Sĩ Tôn Lão Nhược - Đài Thái Hư]
+    Player -->|Dẫn dắt Tu Tiên & Lôi Kiếp| SwordImmortal[Kiếm Tiên Tiêu Dao - Núi Kiếm]
+    Player -->|Mua Bùa May Mắn & Dược Thảo| Alchemist[Dược Sĩ Miria]
+    Player -->|Giao Dịch Chợ Trời & Thu Thuế| Master[Bá Tước Silas]
 ```
 
-1. **Trưởng Lão Vane (Làng Khởi Nguyên):**
-   * Người sống sót từ thảm họa Đại Sụp Đổ, nắm giữ chìa khóa mở Đền Thần Vực và dẫn dắt tân thủ những bước đi đầu tiên.
-2. **Thợ Rèn Độc Nhãn Vulcan (Khu Lò Rèn Thành Phố):**
-   * Bậc thầy rèn vũ khí với bàn tay ma thuật, nơi người chơi tìm đến để nung nấu trang bị từ +1 đến +15 với hy vọng kích hoạt hào quang thần binh.
-3. **Đạo Sĩ Tẩy Mệnh Tôn Lão Nhược (Ẩn cư góc Tây Thành Phố):**
-   * Nhân vật bí ẩn mang phong thái dị nhân tiên hiệp, chuyên sử dụng Vàng và Bột Tẩy Hồn để đảo ngược thiên mệnh, giúp người chơi đổi hệ nguyên tố.
-4. **Dược Sĩ Quái Dị Miria (Chợ Dược Liệu):**
-   * Cung cấp các loại thuốc hồi sinh lực, linh dược tăng tốc độ, bùa may mắn và thu mua mảnh tàn trang để đổi hòm quà.
-5. **Bá Tước Silas - Quản Lý Chợ Trời (Quảng Trường Trung Tâm):**
-   * Người giám sát các sạp hàng tự do của người chơi và là đại diện thu thuế 5% cho Bang Hội chiếm được Vực Đá Quý.
+1. **Trưởng Lão Vane (Làng Khởi Nguyên):** Người sống sót từ thảm họa Đại Sụp Đổ, hướng dẫn tân thủ nhập môn.
+2. **Thợ Rèn Độc Nhãn Vulcan (Khu Lò Rèn):** Bậc thầy dung hợp kỹ nghệ rèn Tây Phương với Lò Bát Quái Đông Phương, hỗ trợ cường hóa vũ khí +15 và luyện chế Đan Dược Đột Phá.
+3. **Đạo Sĩ Tôn Lão Nhược (Đài Triệu Hoán Thái Hư):** Trấn giữ tế đàn bát quái, người hướng dẫn cách dùng Lệnh Bài Tầm Tiên để Gacha triệu hồi tướng Spine 2D.
+4. **Kiếm Tiên Tiêu Dao (Kiếm Các Thần Vực):** Dẫn dắt người chơi qua từng tầng Cảnh Giới: Trúc Cơ, Kim Đan, Nguyên Anh và hướng dẫn cách chịu đựng Lôi Kiếp Thiên Phạt.
+5. **Dược Sĩ Quái Dị Miria:** Thu mua mảnh tàn trang, bán đan dược hồi phục và nguyên liệu luyện đan.
+6. **Bá Tước Silas - Quản Lý Chợ Trời:** Quản lý sàn giao dịch tự do, thu thuế 5% cho Bang Hội chiếm giữ Vực Đá Quý.
 
 ---
 
-## 4. CHI TIẾT 4 CHƯƠNG NHIỆM VỤ CHÍNH TUYẾN (CẤP 1 - 60)
+## 4. CHI TIẾT TUYẾN NHIỆM VỤ CHÍNH TUYẾN KẾT HỢP CẢNH GIỚI (CẤP 1 - 65)
 
-### 📖 CHƯƠNG 1: KẺ THỨC TỈNH (CẤP 1 - 15)
-* **Khu vực hoạt động:** Làng Khởi Nguyên, Cánh Đồng Hoa Nắng, Rừng Sơ Khai.
+### 📖 CHƯƠNG 1: KHỞI TÂM LUYỆN KHÍ (CẤP 1 - 15)
+* **Cảnh giới:** Luyện Khí Tầng 1 ➔ Tầng 9.
+* **Khu vực:** Làng Khởi Nguyên, Đền Thần Vực.
 * **Mạch truyện:** 
-  * Người chơi bắt đầu với tư cách dân quân tự vệ của làng, nhận nhiệm vụ quét sạch lũ Nấm Ma Hóa và Heo Rừng đang phá hoại hoa màu.
-  * Trong lúc làm nhiệm vụ, người chơi nhặt được một trang sách rách phát ra ánh sáng kỳ bí. Trưởng Lão Vane nhận ra đây là Tàn Trang của Cổ Thư Khởi Nguyên.
-  * Đạt cấp 10, người chơi bước vào Đền Thần Vực cổ xưa, đặt tay lên Bệ Đá Thần để kích hoạt nghi thức Thức Tỉnh, roll ngẫu nhiên 1 trong 6 Ấn Ký Nguyên Tố bẩm sinh.
-  * Nhiệm vụ kết thúc: Hạ gục Boss sơ cấp **Spore King (Cấp 15)** để lấy giấy phép tiến vào Đại Đô Thành.
+  * Diệt quái sơ cấp, nhặt trang tàn kinh đầu tiên.
+  * Đạt Cấp 10: Vào Đền Thần Vực kích hoạt Ấn Ký Linh Căn Bẩm Sinh.
+  * Hạ gục Boss **Spore King (Cấp 15)**, hoàn thành tầng Luyện Khí thứ 9, chuẩn bị Trúc Cơ Đan.
 
-### 📖 CHƯƠNG 2: DẤU CHÂN BẠO CHÚA (CẤP 16 - 35)
-* **Khu vực hoạt động:** Thành Phố Ánh Sáng Astraea, Thung Lũng Cỏ Gió, Đầm Lầy Tử Khí.
+### 📖 CHƯƠNG 2: TRÚC CƠ & NGỰ KIẾM PHI HÀNH (CẤP 16 - 30)
+* **Cảnh giới:** Trúc Cơ Sơ Kỳ ➔ Viên Mãn.
+* **Khu vực:** Thành Phố Ánh Sáng, Thung Lũng Cỏ Gió, Đài Triệu Hoán Thái Hư.
 * **Mạch truyện:**
-  * Đến thành phố, người chơi được gia nhập Hiệp Hội Thợ Săn, mở khóa Ô Sách Phép thứ hai (Sub Slot).
-  * Điều tra những vụ mất tích bí ẩn tại Thung Lũng Cỏ Gió, phát hiện dấu vết của Ma Lợn Gai Gorefang và Xà Thần 3 Đầu Hydra.
-  * Người chơi bắt đầu học cách tổ đội (Party) để cùng nhau săn lùng những con Boss đầu tiên, trải nghiệm cơ chế tranh chấp rương báu 30 giây đầy kịch tính.
-  * Đoạt được cuốn **Sách Phép Lam (Rare)** đầu tiên trong đời.
+  * Đến Đài Thái Hư gặp Đạo Sĩ Tôn Lão Nhược, thực hiện lần **Gacha Triệu Hồi Tướng Spine 2D đầu tiên**.
+  * Cắn Trúc Cơ Đan, thức tỉnh khả năng **Ngự Kiếm / Phi Hành**, tốc độ chạy tăng vọt.
+  * Săn lùng Boss dã ngoại Gorefang và Hydra, mở khóa Tháp Hư Không tầng 1-20.
 
-### 📖 CHƯƠNG 3: CỔ THƯ HỖN MANG (CẤP 36 - 50)
-* **Khu vực hoạt động:** Hẻm Núi Gió Hú, Vùng Đất Chết, Miệng Núi Lửa Tro Tàn.
+### 📖 CHƯƠNG 3: KIM ĐAN TAM TRỌNG LÔI KIẾP (CẤP 31 - 45)
+* **Cảnh giới:** Kim Đan Kỳ (Vượt Tam Trọng Lôi Kiếp).
+* **Khu vực:** Đầm Lầy Tử Khí, Miệng Núi Lửa Tro Tàn, Vực Đồ Sát PK.
 * **Mạch truyện:**
-  * Rời xa các vùng đất an toàn, người chơi tiến vào khu vực dã ngoại không luật lệ - nơi cho phép bật **Cờ Đỏ Đồ Sát (PK Tự Do)**.
-  * Các bang hội bắt đầu tranh giành bãi quái cày cấp và phục kích lẫn nhau tại các điểm hồi sinh Boss Thế Giới.
-  * Cuộc chiến đẫm máu với **Hỏa Viêm Ma Thần - Ignis Golem** để tranh đoạt **Sách Phép Tím (Epic)** mang những dòng Affix bạo kích chí tử.
-  * Mở rộng mạng lưới kinh tế: Dựng sạp bán đồ, giao dịch P2P giữa các thợ săn cày cuốc.
+  * Đạt đỉnh phong Trúc Cơ, kích hoạt sự kiện **Độ Kiếp Lôi Đình**: Sấm sét giáng xuống màn hình, toàn server chứng kiến màn đột phá Kim Đan.
+  * Mở khóa Ô Kỹ Năng / Bí Tịch thứ 3.
+  * Bắt đầu tham gia Đấu Trường Xếp Hạng Spine Arena và săn Boss Thế Giới Ignis Golem đoạt Sách Phép Tím.
 
-### 📖 CHƯƠNG 4: TÁI THIẾT PHONG ẤN (CẤP 51 - 60)
-* **Khu vực hoạt động:** Phế Tích Cổ Thụ, Vực Đá Quý, Cửa Vết Nứt Hư Không.
+### 📖 CHƯƠNG 4: NGUYÊN ANH XUẤT KHIẾU & THẦN MA ĐẠI CHIẾN (CẤP 46 - 55)
+* **Cảnh giới:** Nguyên Anh Kỳ (Vượt Lục Trọng Lôi Kiếp).
+* **Khu vực:** Vực Đá Quý, Phế Tích Cổ Thần.
 * **Mạch truyện:**
-  * Phong ấn ngàn năm trước đang rạn nứt nghiêm trọng. Binh đoàn Hư Không do **Void Herald** chỉ huy chuẩn bị tràn qua.
-  * Chiến sự nổ ra giữa các Bang Hội hùng mạnh nhất trong sự kiện **Công Thành Chiếm Mỏ Vực Đá Quý (20:00 Thứ Bảy)** nhằm thâu tóm tài nguyên tinh thể phong ấn và hưởng thuế chợ trời.
-  * Đỉnh cao danh vọng: Sở hữu vũ khí Thần Khí +15 phát sáng cầu vồng tím rực rỡ, trang bị song **Sách Phép Vàng (Mythic)** cùng bang hội nghênh chiến Ma Thú Thần Thoại.
+  * Vượt qua Lục Trọng Thiên Kiếp, ngưng tụ Nguyên Anh Chân Thân: Nhận nội tại tự động hồi sinh 1 lần khi chết.
+  * Mở khóa slot Tướng Trợ Chiến Striker Call ngoài map dã ngoại.
+  * Bang hội đại chiến tranh đoạt mỏ tài nguyên Vực Đá Quý (20:00 Thứ Bảy).
+
+### 📖 CHƯƠNG 5: HÓA THẦN & PHI THĂNG PHONG ẤN (CẤP 56 - 65+)
+* **Cảnh giới:** Hóa Thần ➔ Độ Kiếp Phi Thăng.
+* **Khu vực:** Vết Nứt Hư Không, Tế Đàn Khởi Nguyên.
+* **Mạch truyện:**
+  * Nghênh chiến Binh Đoàn Hư Không do Void Herald và Thái Cổ Tà Thần dẫn đầu.
+  * Thần Thông Đại Thành, kích hoạt Thần Binh +15 hào quang rực rỡ, thống lĩnh đội hình 5 Đại Tướng UR/SSR lập lại trật tự càn khôn.
 
 ---
 
 ## 5. THIẾT KẾ CÁC KHU VỰC BẢN ĐỒ (WORLD MAP)
 
 ```
-[Bản Đồ 1: Làng Khởi Nguyên] (Khu An Toàn)
+[Bản Đồ 1: Làng Khởi Nguyên] (Khu An Toàn | Luyện Khí)
        ↓
-[Bản Đồ 2: Thung Lũng Cỏ Gió] (Quái Lv 16 - 25 | Boss Gorefang)
+[Bản Đồ 2: Thung Lũng Cỏ Gió & Đài Thái Hư] (Quái Lv 16 - 25 | Trúc Cơ & Gacha Tướng)
        ↓
-[Bản Đồ 3: Thành Phố Ánh Sáng] (Trung Tâm Giao Dịch, Chợ Trời, Thợ Rèn)
+[Bản Đồ 3: Thành Phố Ánh Sáng Astraea] (Trung Tâm Giao Dịch, Chợ Trời, Lò Luyện Đan)
        ↓
-[Bản Đồ 4: Đầm Lầy Tử Khí] (Quái Lv 26 - 35 | Boss Hydra | Bắt đầu cho phép PK)
+[Bản Đồ 4: Đầm Lầy Tử Khí] (Quái Lv 26 - 35 | PK Tự Do | Tam Trọng Lôi Kiếp)
        ↓
-[Bản Đồ 5: Miệng Núi Lửa Tro Tàn] (Quái Lv 36 - 50 | Boss Golem | Chiến trường PK tự do)
+[Bản Đồ 5: Miệng Núi Lửa Tro Tàn] (Quái Lv 36 - 50 | Kim Đan & Đấu Trường Spine)
        ↓
-[Bản Đồ 6: Vực Đá Quý & Vết Nứt Hư Không] (Khu Cấp Cao Lv 51 - 60 | Công Thành Bang Hội)
+[Bản Đồ 6: Vực Đá Quý & Vết Nứt Hư Không] (Khu Lv 51 - 65 | Nguyên Anh / Hóa Thần | Công Thành)
 ```
 
-Mỗi bản đồ đều được máy chủ phân chia thành **Khu 1 đến Khu 20** giúp game luôn vận hành trơn tru trên trình duyệt web, đảm bảo người chơi có thể tự do chuyển khu tìm bãi quái vắng hoặc cùng bang hội gom quân săn Boss.
+Toàn bộ thế giới được vận hành với hệ thống **20 Channels (Khu 1 - Khu 20)** đảm bảo trải nghiệm siêu mượt trên Web H5, tạo sân chơi cày cuốc, săn boss, độ kiếp và giao thương tự do không giới hạn.

@@ -1,7 +1,7 @@
 # TÀI LIỆU THIẾT KẾ TÍNH NĂNG & CƠ CHẾ GAMEPLAY (CORE SYSTEMS)
-**Dự án:** Astraea Online - Cổ Thư Hỗn Mang (The Shattered Grimoire)  
+**Dự án:** Echoes of Genesis (Astraea Online - Cổ Thư Hỗn Mang)  
 **Tài liệu:** Game Mechanics & Features Specification (GDD Feature Details)  
-**Phiên bản:** 1.0 - Chính thức  
+**Phiên bản:** 2.0 - Tích hợp Dual-Gameplay & Hệ Thống Tu Tiên Gacha  
 
 ---
 
@@ -14,6 +14,10 @@
 6. [HỆ THỐNG KINH TẾ: CHỢ TRỜI & GIAO DỊCH TỰ DO (FREE ECONOMY)](#6-hệ-thống-kinh-tế-chợ-trời--giao-dịch-tự-do-free-economy)
 7. [HỆ THỐNG CHIẾN ĐẤU, ĐỒ SÁT & PK THẾ GIỚI (WORLD PVP & KARMA)](#7-hệ-thống-chiến-đấu-đồ-sát--pk-thế-giới-world-pvp--karma)
 8. [HỆ THỐNG TỔ ĐỘI & CÔNG THÀNH BANG HỘI (SOCIAL & GUILD WAR)](#8-hệ-thống-tổ-đội--công-thành-bang-hội-social--guild-war)
+9. [HỆ THỐNG CẢNH GIỚI TU TIÊN & ĐỘT PHÁ LÔI KIẾP (CULTIVATION REALMS)](#9-hệ-thống-cảnh-giới-tu-tiên--đột-phá-lôi-kiếp-cultivation-realms)
+10. [GAMEPLAY B: CHIẾN THUẬT XẾP TƯỚNG SPINE 2D & GACHA ĐÀI THÁI HƯ](#10-gameplay-b-chiến-thuật-xếp-tướng-spine-2d--gacha-đài-thái-hư)
+11. [CƠ CHẾ LIÊN THÔNG DUAL-GAMEPLAY (DUYÊN PHẬN & TRỢ CHIẾN STRIKER)](#11-cơ-chế-liên-thông-dual-gameplay-duyên-phận--trợ-chiến-striker)
+12. [CÁC CHẾ ĐỘ PHỤ BẢN ĐỘI HÌNH TƯỚNG SPINE 2D (PVE / PVP)](#12-các-chế-độ-phụ-bản-đội-hình-tướng-spine-2d-pve--pvp)
 
 ---
 
@@ -24,7 +28,7 @@
 graph TD
     Start[Tạo nhân vật - Cấp 1] --> Grind[Làm NV & Cày quái đạt Cấp 10]
     Grind --> Temple[Vào Đền Thần Vực - Chạm Bệ Đá Khởi Nguyên]
-    Temple --> Roll[Server Roll ngẫu nhiên 1 trong 6 Hệ]
+    Temple --> Roll[Server Roll ngẫu nhiên 1 trong 6 Hệ Linh Căn]
     Roll --> GetElement[Nhận Ấn Ký Bẩm Sinh vĩnh viễn]
     GetElement --> ChangeSystem{Muốn đổi hệ?}
     ChangeSystem -- Có --> Shaman[Gặp NPC Đạo Sĩ Tẩy Mệnh tiêu hao Vàng]
@@ -70,7 +74,6 @@ Thay vì cố định kỹ năng theo môn phái truyền thống, người chơ
 - Mỗi cấp sách mang lại **1 Điểm Bí Thuật (TP - Tome Point)**. Tối đa 10 TP ở cấp 10.
 
 ### 2.3. Cây Kỹ Năng 4 Tầng & Phân Nhánh A/B
-
 ```
 [Tầng 1: Active Core] (Tốn 1 TP) -> Mở khóa chiêu cơ bản
            │
@@ -115,174 +118,132 @@ Mỗi khi thăng 1 Cấp độ, nhân vật nhận được **5 Điểm Tiềm N
 - **VIT (Thể Lực):** 1 điểm = +25 Máu (HP) tối đa, +1.5 Điểm Giáp, +0.8 Tốc độ hồi máu/5s.
 
 ### 3.2. Cơ Chế Auto-Grind Trên Web H5
-Nhằm tối ưu cho trải nghiệm người chơi bận rộn trên máy tính văn phòng và điện thoại:
 - **Bật/Tắt 1 chạm:** Nút bấm Auto trên góc phải màn hình hoặc nhấn phím tắt `Space`.
 - **Phạm vi tự động:** Tự động dò tìm quái vật gần nhất trong bán kính `5m - 10m` quanh điểm đứng ban đầu.
-- **Tự động dùng vật phẩm hồi phục:** Thiết lập ngưỡng tự động uống bình Máu khi HP < 50% và uống bình Mana khi MP < 30%.
-- **Quy tắc an toàn chống chết:**
-  - Tự động dừng tấn công và phát âm thanh cảnh báo khi túi đồ bị đầy 100%.
-  - **Tự động ngắt Auto ngay lập tức khi phát hiện bị người chơi khác bật Cờ Đỏ đồ sát tấn công**, giúp người chơi kịp thời phản ứng chiến đấu hoặc bỏ chạy.
+- **Tự động dùng vật phẩm hồi phục:** Uống bình Máu khi HP < 50% và uống bình Mana khi MP < 30%.
+- **Quy tắc an toàn chống chết:** Tự động ngắt Auto ngay lập tức khi phát hiện bị người chơi khác bật Cờ Đỏ đồ sát tấn công.
 
 ---
 
 ## 4. HỆ THỐNG SĂN BOSS DÃ NGOẠI & PHÂN KHU 20 CHANNELS
 
 ### 4.1. Cấu Trúc 20 Phân Khu (Zone / Channel System)
-- Mỗi bản đồ dã ngoại (Thung Lũng, Đầm Lầy, Núi Lửa) được server chia thành **Khu 1 đến Khu 20**.
-- **Chuyển khu mượt mà:** Người chơi đứng tại Trụ Dịch Chuyển bản đồ hoặc chọn dropdown trên giao diện, bấm chọn khu vực muốn tới (Thời gian hồi chuyển khu: 10 giây).
-- **Mục đích:** Phân tán mật độ người chơi tránh lag giật, đồng thời tạo ra 20 bãi săn Boss độc lập cho cộng đồng tranh tài.
+- Mỗi bản đồ dã ngoại được server chia thành **Khu 1 đến Khu 20** giúp phân tán tải và nhân bội cơ hội săn Boss cho người chơi.
+- Đổi khu nhanh tại Trụ Dịch Chuyển (Thời gian hồi: 10 giây).
 
 ### 4.2. Cơ Chế Báo Động Toàn Server (World Broadcast)
-- Boss dã ngoại hồi sinh theo chu kỳ thời gian ngẫu nhiên (Ví dụ: mỗi 4 tiếng/lần ở các khu vực bất kỳ).
-- Khi Boss xuất hiện, toàn server xuất hiện thông báo chữ đỏ chạy ngang màn hình:
-  > *"Cảnh Báo: Ma Thú Bạo Chúa [Tên Boss] đã giáng lâm tại [Tên Bản Đồ] - [Khu X]!"*
+Khi Boss xuất hiện, toàn server xuất hiện thông báo chữ đỏ chạy ngang màn hình:
+> *"Cảnh Báo: Ma Thú Bạo Chúa [Tên Boss] đã giáng lâm tại [Tên Bản Đồ] - [Khu X]!"*
 
 ### 4.3. Luật Phân Định Quyền Nhặt Đồ & Tranh Đoạt 30 Giây
-Nhằm tái hiện cảm giác tranh cướp đồ cực kỳ hưng phấn của dòng game Võ Lâm / Ngọc Rồng:
-
-```mermaid
-sequenceDiagram
-    autonumber
-    actor TeamA as Tổ Đội Top 1 Damage
-    actor Killer as Người Chơi Last-Hit
-    actor Boss as Ma Thú Bạo Chúa
-    actor Others as Người Chơi Khác Xung Quanh
-
-    TeamA->>Boss: Dồn tổng sát thương lớn nhất (Top 1)
-    Killer->>Boss: Tung đòn kết liễu cuối cùng (Last-Hit)
-    Boss-->>Boss: Tử trận, rơi Rương Boss & Hòm May Mắn
-    
-    Note over TeamA,Killer: 30 GIÂY BẢO VỆ ĐỘC QUYỀN
-    Boss->>TeamA: Rương Boss Chính (Chỉ TeamA nhặt được)
-    Boss->>Killer: Hòm Thưởng May Mắn (Chỉ Killer nhặt được)
-    Others-->>Boss: Không thể nhặt trong 30 giây đầu
-    
-    Note over TeamA,Others: HẾT 30 GIÂY - GIAI ĐOẠN CƯỚP ĐỒ TỰ DO
-    Boss->>Others: Khóa bảo vệ hết hiệu lực! Bất kỳ ai cũng có thể nhặt đồ rơi vương vãi!
-```
-
 - **Top Damage:** Người hoặc tổ đội gây tổng sát thương lớn nhất được bảo vệ quyền nhặt Rương Boss Chính trong 30 giây đầu.
-- **Last-Hit:** Người tung đòn kết liễu nhận riêng 1 Hòm Thưởng May Mắn (Rơi Sách hoặc Bùa Cường Hóa).
-- **Hết 30 giây:** Mọi vật phẩm chưa kịp nhặt sẽ mở khóa cho toàn bộ người chơi xung quanh lao vào tranh cướp!
+- **Last-Hit:** Người tung đòn kết liễu nhận riêng 1 Hòm Thưởng May Mắn.
+- **Hết 30 giây:** Mọi vật phẩm chưa kịp nhặt sẽ mở khóa cho toàn bộ người chơi xung quanh lao vào tranh cướp tự do!
 
 ---
 
 ## 5. HỆ THỐNG LÒ RÈN & CƯỜNG HÓA +15 (FORGING & WEAPON GLOW)
 
 ### 5.1. Bảng Tỷ Lệ & Rủi Ro Chi Tiết Từng Cấp
+* **+1 đến +3:** Tỷ lệ 100%, không rủi ro.
+* **+4 đến +6:** Tỷ lệ 60% -> 45%, thất bại giảm 1 cấp.
+* **+7 đến +9:** Tỷ lệ 35% -> 20%, thất bại rớt về mốc an toàn (+4). Dùng Bùa Hộ Mệnh giữ cấp.
+* **+10 đến +12:** Tỷ lệ 15% -> 8%, thất bại rớt về +4 (Không bùa rớt về +0). Cần Bùa Cao Cấp.
+* **+13 đến +14:** Tỷ lệ 5% -> 3%, thất bại rớt về +0, có 10% nguy cơ VỠ VỤN trang bị.
+* **+15 (Thần Khí):** Tỷ lệ 1.5%, thất bại VỠ NÁT thành Bụi Ma Pháp. Bắt buộc dùng Bùa Thần Thánh.
 
-```
-[Trang Bị Cần Cường Hóa] + [Đá Cường Hóa Tương Ứng] + [Tiền Vàng]
-                       │
-                       ▼
-          [LÒ RÈN THỢ RÈN VULCAN]
-                       │
-         ┌─────────────┴─────────────┐
-         ▼                           ▼
-    THÀNH CÔNG                    THẤT BẠI
-   (Tăng +1 Cấp)      (Tùy theo mốc an toàn / rớt cấp / vỡ)
-```
-
-| Mốc Cấp | Tỷ Lệ % | Kết Quả Khi Thất Bại | Biện Pháp & Vật Phẩm Hỗ Trợ |
-| :---: | :---: | :--- | :--- |
-| **+1** | 100% | Không có thất bại | Không cần |
-| **+2** | 100% | Không có thất bại | Không cần |
-| **+3** | 100% | Không có thất bại | Không cần |
-| **+4** | 60% | Giảm về +3 | Bột May Mắn sơ cấp (+5% tỷ lệ) |
-| **+5** | 50% | Giảm về +4 | Bột May Mắn sơ cấp (+5% tỷ lệ) |
-| **+6** | 45% | Giảm về +5 | Bột May Mắn sơ cấp (+5% tỷ lệ) |
-| **+7** | 35% | **Rớt thẳng về mốc an toàn (+4)** | Dùng **Bùa Hộ Mệnh Thường** để giữ nguyên cấp |
-| **+8** | 25% | **Rớt thẳng về mốc an toàn (+4)** | Dùng **Bùa Hộ Mệnh Thường** để giữ nguyên cấp |
-| **+9** | 20% | **Rớt thẳng về mốc an toàn (+4)** | Dùng **Bùa Hộ Mệnh Thường** để giữ nguyên cấp |
-| **+10** | 15% | Rớt về +4 (Không bùa rớt về +0) | Bắt buộc dùng **Bùa Hộ Mệnh Cao Cấp** |
-| **+11** | 10% | Rớt về +4 (Không bùa rớt về +0) | Bắt buộc dùng **Bùa Hộ Mệnh Cao Cấp** |
-| **+12** | 8% | Rớt về +4 (Không bùa rớt về +0) | Bắt buộc dùng **Bùa Hộ Mệnh Cao Cấp** |
-| **+13** | 5% | Rớt về +0, **10% nguy cơ VỠ VỤN** | Dùng Bùa Cao Cấp + Bột May Mắn Thượng Hạng |
-| **+14** | 3% | Rớt về +0, **10% nguy cơ VỠ VỤN** | Dùng Bùa Cao Cấp + Bột May Mắn Thượng Hạng |
-| **+15** | **1.5%** | **VỠ NÁT 100% thành Bụi Ma Pháp** | Cần **Bùa Thần Thánh Bảo Mệnh** chống vỡ |
-
-### 5.2. Hiệu Ứng Hào Quang Vũ Khí (Weapon Glow) 5 Bậc Đẳng Cấp
-Khi nhân vật cầm vũ khí đã cường hóa, hệ thống shader đồ họa tự động kích hoạt hiệu ứng phát sáng hiển thị cho toàn server chiêm ngưỡng:
-1. **Mốc +4 đến +6:** Ánh sáng trắng mờ dịu, bao bọc mờ quanh lưỡi kiếm.
-2. **Mốc +7 đến +9:** Hào quang xanh lơ nhấp nháy liên tục, để lại vệt sáng khi vung chém.
-3. **Mốc +10 đến +12:** Hào quang vàng kim rực rỡ tỏa rộng, hào khí ngút trời.
-4. **Mốc +13 đến +14:** Hào quang đỏ rực như máu, kèm theo các tia chớp điện giật lách tách liên hồi quanh thân vũ khí.
-5. **Mốc +15 (Thần Khí Tối Thượng):** Hào quang chuyển sắc cầu vồng huyền ảo liên tục (Tím - Hồng - Vàng - Xanh Ngọc), phát tán luồng linh khí hư không + Thông báo vinh danh tên tuổi người chơi trên toàn máy chủ!
+### 5.2. Hiệu Ứng Hào Quang Vũ Khí (Weapon Glow) 5 Bậc
+* +4 đến +6: Hào quang trắng mờ dịu.
+* +7 đến +9: Hào quang xanh lơ nhấp nháy liên tục.
+* +10 đến +12: Hào quang vàng kim rực rỡ tỏa rộng.
+* +13 đến +14: Hào quang đỏ rực như máu kèm tia chớp điện giật lách tách.
+* +15 (Thần Khí Tối Thượng): Hào quang cầu vồng chuyển sắc huyền ảo (Tím - Hồng - Vàng - Xanh Ngọc).
 
 ---
 
 ## 6. HỆ THỐNG KINH TẾ: CHỢ TRỜI & GIAO DỊCH TỰ DO (FREE ECONOMY)
 
-Đây là linh hồn giữ chân game thủ cày cuốc theo đúng bản sắc **Teamobi & Kiếm Thế**:
-
-### 6.1. Quy Tắc "Unbound 100%"
-- Toàn bộ Sách Phép, Đá Cường Hóa, Trang Bị và Dược Phẩm nhặt được từ đánh quái và săn Boss dã ngoại đều ở trạng thái **Không Khóa (Unbound)**.
-- Người chơi cày chay nhặt được đồ xịn khác hệ hoàn toàn có thể bán lấy tiền hoặc đổi đồ cho người khác mà không bị hệ thống ép khóa vật phẩm.
-
-### 6.2. Dựng Sạp Hàng Chợ Trời (Player Stalls)
-- Tại Quảng Trường Trung Tâm Thành Phố, người chơi mở túi đồ chọn tính năng: **"Dựng Sạp Bán Hàng"**.
-- Thiết lập:
-  - Tên sạp hàng: Tối đa 30 ký tự (Ví dụ: *"Bán Sách Lôi Epic - Mua Đá Cường Hóa"*).
-  - Chọn tối đa **10 vật phẩm** bày bán.
-  - Định giá bán cho từng món bằng đơn vị **Vàng** hoặc **Ngọc**.
-- Sau khi mở sạp, nhân vật sẽ ngồi khoanh chân dựng biển hiệu bán hàng tự động. Những người chơi khác đi ngang qua chỉ cần click vào sạp để xem bảng giá và bấm mua ngay lập tức.
-
-### 6.3. Giao Dịch P2P Trực Tiếp 2 Bước (Face-to-Face Trade)
-- Hai người chơi đứng cạnh nhau trong thành phố, chọn đối phương và bấm **"Mời Giao Dịch"**.
-- Cửa sổ giao dịch mở ra với 2 bên độc lập hiển thị các ô đặt đồ và ô nhập tiền.
-- **Cơ chế bảo mật 2 bước chống tráo đồ:**
-  - **Bước 1 (Khóa Đồ):** Sau khi đặt đồ và tiền xong, 2 bên bấm "Khóa". Khi đã khóa, không ai có thể thay đổi số tiền hoặc rút đồ ra được nữa.
-  - **Bước 2 (Xác Nhận Đổi):** Sau khi cả 2 bên cùng bấm "Khóa", nút "Xác Nhận Giao Dịch" mới sáng lên. Bấm xác nhận thì đồ và tiền mới chính thức được chuyển đổi.
+* **Quy tắc Unbound 100%:** Toàn bộ Sách Phép, Đá Cường Hóa và Trang Bị săn từ Boss đều không khóa.
+* **Mở Sạp Chợ Trời:** Bày bán tối đa 10 món tại Quảng Trường Thành Phố, định giá bằng Vàng hoặc Ngọc.
+* **Giao Dịch P2P 2 Bước:** Bước 1 Khóa Đồ -> Bước 2 Xác Nhận Giao Dịch chống tráo đồ.
 
 ---
 
 ## 7. HỆ THỐNG CHIẾN ĐẤU, ĐỒ SÁT & PK THẾ GIỚI (WORLD PVP & KARMA)
 
-### 7.1. Ba Trạng Thái Cờ Chiến Đấu
-Người chơi bấm vào biểu tượng cờ cạnh ảnh đại diện nhân vật để đổi chế độ:
-- **Cờ Trắng (Hòa Bình):** Trạng thái mặc định. Không thể tấn công người chơi khác và hoàn toàn miễn nhiễm trước đòn đánh của những người cùng cờ trắng.
-- **Cờ Đỏ (Đồ Sát):** Cho phép tấn công bất kỳ ai ngoài khu vực an toàn.
-  - Bật cờ mất **5 giây chuẩn bị** (có thanh đếm lùi để cảnh báo xung quanh).
-  - Tắt cờ cần **30 giây không phát sinh bất kỳ giao tranh nào**.
-- **Cờ Bang (Guild PK):** Tự động chuyển toàn bộ người chơi thuộc các Bang Hội khác thành mục tiêu tấn công hợp lệ trong các khu vực dã ngoại và sự kiện.
-
-### 7.2. Điểm Tội Ác (PK Points) & Trừng Phạt Tên Đỏ (Hắc Danh)
-- Khi đang bật Cờ Đỏ và hạ gục 1 người chơi vô tội (Cờ Trắng):
-  - Người chơi bị cộng ngay lập tức **+1 Điểm Tội Ác (PK Point)**.
-  - Tên nhân vật đổi sang **Màu Đỏ**.
-- **Hình phạt dành cho Tên Đỏ:**
-  - Bị lính gác NPC tại cổng thành phố tự động tấn công truy sát.
-  - Không thể sử dụng dịch chuyển nhanh của Trụ Dịch Chuyển.
-  - **Khi bị hạ gục:** Rơi ngay lập tức **10% số Vàng** đang mang theo ra đất, đồng thời tăng **50% tỷ lệ làm rơi 1 món trang bị đang mặc trên người ra ngoài!**
-- **Rửa Tội:**
-  - Cày quái chuộc lỗi: Đánh gục 100 quái thường cấp tương đương để giảm 1 Điểm PK.
-  - Dùng tiền mua "Thư Sám Hối" từ NPC Tu Sĩ để xóa điểm tội ác.
-
-### 7.3. Khu Vực An Toàn Tuyệt Đối (Safe Zone)
-- Toàn bộ phạm vi Làng Khởi Nguyên, Thành Phố Trung Tâm và bán kính 10m quanh Trụ Hồi Sinh được bảo hộ bởi phong ấn hòa bình: Tuyệt đối cấm bật cờ đồ sát, cấm mọi hành vi gây sát thương giữa người chơi.
+* **3 Chế Độ Cờ:** Cờ Trắng (Hòa bình), Cờ Đỏ (Đồ sát ngoài vùng an toàn), Cờ Bang (Guild PK).
+* **Trừng Phạt Tên Đỏ (Hắc Danh):** Giết người vô tội bị tích điểm PK. Khi chết, rơi 10% Vàng và tăng 50% nguy cơ rớt trang bị đang mặc ra đất!
+* **Khu An Toàn Tuyệt Đối:** Làng, Thành Phố và Trụ Hồi Sinh tuyệt đối cấm PK.
 
 ---
 
 ## 8. HỆ THỐNG TỔ ĐỘI & CÔNG THÀNH BANG HỘI (SOCIAL & GUILD WAR)
 
-### 8.1. Hệ Thống Tổ Đội (Party System)
-- Số lượng: Tối đa **4 thành viên/đội**.
-- **Cơ chế buff lợi ích nhóm:** Mỗi khi có thêm 1 đồng đội đứng chung trong tầm nhìn màn hình, toàn bộ thành viên nhận thêm **+10% EXP nhận được từ quái vật** (Đủ đội 4 người tăng tổng cộng **+40% EXP**).
-- **Giao diện hỗ trợ:** Hiển thị thanh máu/mana thời gian thực của đồng đội, tọa độ khu vực (Khu X) và chấm xanh biểu thị vị trí trên Minimap.
+* **Tổ Đội (Party):** Tối đa 4 người. Mỗi thành viên đứng cùng màn hình buff thêm +10% EXP (Đủ đội buff +40% EXP).
+* **Công Thành Vực Đá Quý (20:00 Thứ Bảy):** Bang giữ Trụ Trung Tâm nhận đặc quyền hưởng **5% tổng doanh thu thuế chợ trời toàn server trong tuần!**
 
-### 8.2. Hệ Thống Bang Hội (Guild System)
-- **Thành lập:** Yêu cầu nhân vật đạt Cấp 30 và nộp lệ phí 500.000 Vàng.
-- Sức chứa: Khởi điểm 50 thành viên.
-- **Kỹ Năng Bang Hội:** Thành viên đóng góp Vàng/Ngọc để nâng cấp cây kỹ năng bang:
-  - Tăng % Máu tối đa toàn bang (+2% ~ +10%).
-  - Tăng Tốc độ chạy ngoài dã ngoại (+3% ~ +8%).
-  - Tăng Tỷ lệ rơi vàng khi đánh quái (+5% ~ +15%).
+---
 
-### 8.3. Sự Kiện Công Thành Chiếm Mỏ Vực Đá Quý (20:00 Thứ Bảy Hàng Tuần)
-- **Thời gian diễn ra:** Đúng 20:00 đến 21:00 tối Thứ Bảy hàng tuần.
-- **Địa điểm:** Bản đồ đặc biệt Vực Đá Quý (Không bị phạt điểm tội ác khi giao chiến).
-- **Mục tiêu:** Tại trung tâm bản đồ có **Cột Trụ Long Mạch**. Bang hội nào gây sát thương cuối cùng hoặc chiếm giữ trụ liên tục trong 15 phút sẽ trở thành Bang Chủ Quản Lý Vực Đá Quý trong tuần đó.
-- **Đặc quyền tối thượng của Bang Thắng Cuộc:**
-  - Toàn bộ thành viên bang nhận được gói quà **Đá Cường Hóa Cao Cấp mỗi ngày**.
-  - Tên Bang Hội được khắc lên Tượng Đài Vinh Danh tại Quảng Trường Trung Tâm.
-  - **Hưởng 5% tổng doanh thu thuế giao dịch Vàng tại Chợ Trời toàn server trong suốt tuần đó!**
+## 9. HỆ THỐNG CẢNH GIỚI TU TIÊN & ĐỘT PHÁ LÔI KIẾP (CULTIVATION REALMS)
+
+Game áp dụng hệ thống Cảnh Giới Đột Phá làm trục tăng trưởng sức mạnh song song với Level:
+
+```
+[Luyện Khí (Lv 1-15)] ➔ [Trúc Cơ (Lv 16-30)] ➔ [Kim Đan (Lv 31-45)] ➔ [Nguyên Anh (Lv 46-55)] ➔ [Hóa Thần (Lv 56-65)] ➔ [Độ Kiếp Phi Thăng]
+```
+
+### 9.1. Lợi Ích Từng Cảnh Giới
+* **Luyện Khí:** Khơi thông đan điền, thức tỉnh Ấn Ký Nguyên Tố.
+* **Trúc Cơ:** Thức tỉnh kỹ năng **Ngự Kiếm / Phi Hành**, tăng 30% tốc độ di chuyển dã ngoại, lướt qua chướng ngại vật.
+* **Kim Đan:** Mở khóa Ô Kỹ Năng / Bí Tịch thứ 3, kích hoạt hào quang chân thân bảo hộ.
+* **Nguyên Anh:** Thức tỉnh năng lực **Nguyên Anh Bất Tử** - Tự động hồi sinh 1 lần khi chết (Hồi chiêu 180s).
+* **Hóa Thần & Phi Thăng:** Mở khóa Thần Thông Tối Thượng, mở slot mang 2 Tướng Trợ Chiến ra ngoài dã ngoại.
+
+### 9.2. Sự Kiện Độ Kiếp Lôi Đình (Heavenly Tribulation)
+Khi người chơi tích lũy đủ tu vi đỉnh phong của mỗi cảnh giới, bấm [ĐỘ KIẾP]:
+* Bầu trời tối sầm, mây sấm vần vũ, sấm sét giáng thẳng vào người chơi.
+* Chịu đựng thành công thiên kiếp sẽ kích hoạt thông báo toàn server và thăng hoa thuộc tính vĩnh viễn!
+
+---
+
+## 10. GAMEPLAY B: CHIẾN THUẬT XẾP TƯỚNG SPINE 2D & GACHA ĐÀI THÁI HƯ
+
+Bên cạnh gameplay cày cuốc isometric truyền thống, người chơi có thể bước vào chế độ **Auto-Battler Đội Hình 5v5** cực kỳ đặc sắc:
+
+### 10.1. Chiến Trường Spine 2D Side-View
+* **Đội hình 5 Tướng:** 2 Hàng Trước (Tanker, Đấu Sĩ đỡ đòn) + 3 Hàng Sau (Pháp Sư, Cung Thủ, Trị Liệu).
+* **Đồ họa Spine 2D sống động:** Không cần 8 hướng như isometric, các tướng Spine nhìn ngang với chuyển động xương 60 FPS mượt mà, visual chiêu thức và nộ khí cực kỳ hoành tráng.
+* **Thanh Nộ Khí & Ultimate Cut-In:** Khi tích đủ 1000 Nộ Khí, người chơi chạm Avatar tướng để xả Tuyệt Kỹ Tối Thượng kèm animation zoom-in điện ảnh.
+
+### 10.2. Hệ Thống Gacha: Đài Triệu Hoán Thái Hư
+* **Bể Tầm Tiên Thường:** Dùng *Lệnh Bài Tầm Tiên* (cày cuốc rơi từ quái).
+* **Bể Thần Ma Giới Hạn:** Dùng *Hồn Ngọc Khởi Nguyên* (Ngọc cao cấp), tỷ lệ rơi Tướng UR/SSR tiêu điểm.
+* **Cơ Chế Bảo Hiểm (Pity):**
+  * 10 lần quay chắc chắn nhận ít nhất 1 Tướng SR.
+  * 60 lần quay chắc chắn nổ Tướng SSR/UR.
+  * Quay trùng nhận Mảnh Hồn để Thăng Tinh từ 1 Sao đến 5 Sao Thần Cảnh.
+
+---
+
+## 11. CƠ CHẾ LIÊN THÔNG DUAL-GAMEPLAY (DUYÊN PHẬN & TRỢ CHIẾN STRIKER)
+
+Hai gameplay không tách biệt mà liên kết mật thiết với nhau:
+
+1. **Duyên Phận Bộ Sưu Tập (Passive Bond):**
+   * Chỉ cần sưu tầm được tướng gacha, nhân vật chính dã ngoại tự động được cộng vĩnh viễn % chỉ số (Bạo kích, Giáp, Kháng, Hút máu).
+2. **Kỹ Năng Trợ Chiến Xuất Kích (Striker Call):**
+   * Trang bị 1 Tướng Spine vào slot Hộ Vệ dã ngoại.
+   * Khi đánh quái đầy nộ, bấm nút Space/G: Tướng Spine sẽ từ không trung đáp xuống sàn đấu dã ngoại, tung 1 đòn Tuyệt Kỹ quét sạch quái vật rồi biến mất trong 2.5s.
+3. **Tuần Hoàn Tài Nguyên:** Cày quái ngoài map dã ngoại nhặt vé gacha và đan dược nuôi tướng; Đánh phụ bản tướng rơi ra Sách Phép Mythic và Đá Cường Hóa để nhân vật chính mặc đi PK.
+
+---
+
+## 12. CÁC CHẾ ĐỘ PHỤ BẢN ĐỘI HÌNH TƯỚNG SPINE 2D (PVE / PVP)
+
+* **Tháp Hư Không (100 Tầng):** Thử thách từng tầng với quái vật biến dị, nhận quà mốc rương chọn tướng SSR và sách phép cổ đại.
+* **Đấu Trường Xếp Hạng Spine Arena:** Đặt đội hình thủ, khiêu chiến đội hình người chơi khác để leo bậc Rank (Đồng ➔ Chí Tôn).
+* **Viễn Chinh Roguelike:** Đưa đội hình vượt 15 ải bàn cờ, máu không tự hồi, bốc bài may mắn dọc đường.
+* **Săn Cổ Thần Khổng Lồ (Raid 5v1):** Đội hình 5 tướng xả sát thương vào Boss thần thoại khổng lồ chiếm 1/2 màn hình.
+
+---
+*Tài liệu Master GDD được cập nhật và lưu trữ chính thức trong thư mục `Documents` của dự án.*
