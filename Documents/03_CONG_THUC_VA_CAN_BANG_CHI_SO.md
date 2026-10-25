@@ -1,18 +1,19 @@
 # TÀI LIỆU CÔNG THỨC TOÁN HỌC & CÂN BẰNG CHỈ SỐ (GAME MATH & BALANCE)
-**Dự án:** Astraea Online - Cổ Thư Hỗn Mang (The Shattered Grimoire)  
-**Tài liệu:** Combat Formulas, Stat Scaling, EXP Curves & Probability Tables  
-**Phiên bản:** 1.0 - Chuẩn Production  
+**Dự án:** Echoes of Genesis (Astraea Online - Cổ Thư Hỗn Mang)  
+**Tài liệu:** Combat Formulas, Stat Scaling, EXP Curves (Lv 1 - 150), Tribulation Math & Drop Tables  
+**Phiên bản:** 2.0 - Chuẩn Hóa 9 Đại Cảnh Giới & Hệ Thống Lôi Kiếp  
 
 ---
 
 ## MỤC LỤC
 1. [HỆ THỐNG THUỘC TÍNH CƠ BẢN & CÔNG THỨC QUY ĐỔI](#1-hệ-thống-thuộc-tính-cơ-bản--công-thức-quy-đổi)
 2. [CÔNG THỨC TÍNH SÁT THƯƠNG & KHẮC CHẾ (COMBAT FORMULAS)](#2-công-thức-tính-sát-thương--khắc-chế-combat-formulas)
-3. [ĐƯỜNG CONG KINH NGHIỆM (EXP CURVE CẤP 1 - 60)](#3-đường-cong-kinh-nghiệm-exp-curve-cấp-1---60)
+3. [ĐƯỜNG CONG KINH NGHIỆM EXP & 9 ĐẠI CẢNH GIỚI (CẤP 1 - 150)](#3-đường-cong-kinh-nghiệm-exp--9-đại-cảnh-giới-cấp-1---150)
 4. [BẢNG CHỈ SỐ QUÁI VẬT & MA THÚ BẠO CHÚA (MONSTER STATS TABLE)](#4-bảng-chỉ-số-quái-vật--ma-thú-bạo-chúa-monster-stats-table)
 5. [MÔ HÌNH TOÁN XÁC SUẤT CƯỜNG HÓA VŨ KHÍ (+1 ĐẾN +15)](#5-mô-hình-toán-xác-suất-cường-hóa-vũ-khí-1-đến-15)
 6. [HỆ THỐNG TRỌNG SỐ DÒNG NGẪU NHIÊN (AFFIX RNG WEIGHTS)](#6-hệ-thống-trọng-số-dòng-ngẫu-nhiên-affix-rng-weights)
 7. [CÂN BẰNG PVP & TỶ LỆ TRỪNG PHẠT TÊN ĐỎ](#7-cân-bằng-pvp--tỷ-lệ-trừng-phạt-tên-đỏ)
+8. [CÔNG THỨC TOÁN LÔI KIẾP & RỦI RO THẤT BẠI KHI ĐỘ KIẾP](#8-công-thức-toán-lôi-kiếp--rủi-ro-thất-bại-khi-độ-kiếp)
 
 ---
 
@@ -28,7 +29,7 @@ Mỗi nhân vật khởi tạo tại Cấp 1 có bộ chỉ số nền cơ sở 
 ### 1.1. Công Thức Thăng Cấp & Điểm Tiềm Năng
 - Mỗi khi tăng 1 Cấp độ (Level Up):
   - Nhận tự động: `+30 HP Tối Đa`, `+10 MP Tối Đa`, `+1 Giáp`, `+1 Kháng Phép`.
-  - Nhận **5 Điểm Tiềm Năng (TN)** để người chơi tự do phân bổ.
+  - Nhận **5 Điểm Tiềm Năng (TN)** để người chơi tự do phân bổ vào STR, INT, DEX, VIT.
 
 ### 1.2. Bảng Quy Đổi Điểm Tiềm Năng Chi Tiết
 
@@ -48,174 +49,113 @@ $$\begin{aligned}
 
 ## 2. CÔNG THỨC TÍNH SÁT THƯƠNG & KHẮC CHẾ (COMBAT FORMULAS)
 
-Hệ thống tính toán sát thương được xây dựng theo chuẩn MMORPG chống lạm phát chỉ số (Diminishing Returns) giống cơ chế phòng ngự của Warcraft 3 / League of Legends / Diablo.
-
 ### 2.1. Công Thức Giảm Trừ Sát Thương Theo Giáp (Damage Mitigation)
-Tỷ lệ giảm trừ sát thương vật lý nhận vào ($DR_{phys}$) và ma pháp ($DR_{magic}$) được tính như sau:
+Tỷ lệ giảm trừ sát thương vật lý nhận vào ($DR_{phys}$) và ma pháp ($DR_{magic}$):
 
 $$DR_{phys} = \frac{\text{Armor}}{\text{Armor} + 400 + (8 \times \text{Attacker\_Level})}$$
 
-*Ví dụ minh họa:*
-- Nhân vật cấp 20 có `Armor = 200`. Địch cấp 20 tấn công.
-- Tỷ lệ cản sát thương: $DR = \frac{200}{200 + 400 + 160} = \frac{200}{760} \approx 26.3\%$ (Người chơi chỉ nhận $73.7\%$ sát thương).
-- Khi `Armor = 600`, tỷ lệ cản: $DR = \frac{600}{600 + 560} \approx 51.7\%$.
-
 ### 2.2. Kiểm Tra Né Đòn (Accuracy vs Evasion)
-Xác suất đánh trúng của đòn đánh:
-
 $$\text{Hit\_Rate} = \min\Big(0.95, \, \max\big(0.05, \, 1.0 - (\text{Defender\_Evasion} - \text{Attacker\_Accuracy})\big)\Big)$$
 
-- Luôn giữ tối thiểu 5% cơ hội đánh trúng hoặc né tránh ngẫu nhiên để tạo tính bất ngờ trong combat.
-
 ### 2.3. Công Thức Sát Thương Cuối Cùng (Final Output Damage)
-
 $$\text{Raw\_Damage} = (\text{Base\_Skill\_Damage} + \text{Stat\_Scaling}) \times \text{Resonance\_Multiplier}$$
 
-Trong đó:
-- $\text{Resonance\_Multiplier} = 1.3$ (Nếu Sách Phép trùng Ấn Ký Nguyên Tố bẩm sinh).
-- Nếu không trùng hệ: $\text{Resonance\_Multiplier} = 1.0$.
-
-Nếu kích hoạt Bạo Kích (Critical Hit):
+Trong đó $\text{Resonance\_Multiplier} = 1.3$ nếu Sách Phép trùng Ấn Ký Nguyên Tố / Linh Căn.  
+Nếu kích hoạt Bạo Kích:
 $$\text{Crit\_Damage} = \text{Raw\_Damage} \times \frac{\text{Total\_Crit\_Dmg}}{100}$$
-
-Sát thương thực tế mục tiêu gánh chịu (Final Damage Taken):
+Sát thương thực tế mục tiêu gánh chịu:
 $$\text{Final\_Damage} = \text{Crit\_Damage} \times (1 - DR) \times \text{PvP\_Modifier}$$
-
-*(Lưu ý: $\text{PvP\_Modifier} = 0.6$ khi 2 người chơi đánh nhau để tránh hiện tượng sốc chết trong 1 nốt nhạc).*
+*(Trong đó $\text{PvP\_Modifier} = 0.60$ khi đánh nhau giữa người chơi).*
 
 ---
 
-## 3. ĐƯỜNG CONG KINH NGHIỆM (EXP CURVE CẤP 1 - 60)
+## 3. ĐƯỜNG CONG KINH NGHIỆM EXP & 9 ĐẠI CẢNH GIỚI (CẤP 1 - 150)
 
-Hệ thống EXP được thiết kế theo hàm lũy thừa dốc nhằm tạo cảm giác lên cấp nhanh ở giai đoạn đầu (tạo hưng phấn) và chậm dần ở mốc 40+ để kích thích người chơi giao lưu, lập đội săn Boss dã ngoại.
+Để đảm bảo game có chiều sâu và người chơi gắn bó hàng năm trời, đường cong EXP được thiết kế theo hàm lũy thừa dốc:
 
-$$\text{EXP\_Required}(L) = \left\lfloor 100 \times L^{2.15} + 50 \times L \right\rfloor$$
+$$\text{EXP\_Required}(L) = \left\lfloor 120 \times L^{2.35} + 80 \times L \right\rfloor$$
 
-### 3.1. Bảng EXP Mẫu Theo Từng Cột Mốc
+### 3.1. Bảng 9 Đại Cảnh Giới & Thời Gian Cày Cuốc Chuẩn Mực
 
-| Cấp Độ (Level) | EXP Cần Để Lên Cấp Kế | Tổng EXP Tích Lũy | Thời Gian Cày Ước Tính | Khu Vực Hoạt Động |
-| :---: | :---: | :---: | :---: | :--- |
-| **1** | 150 | 0 | 1 phút | Làng Khởi Nguyên |
-| **5** | 3,450 | 7,200 | 10 phút | Cánh Đồng Nấm |
-| **10 (Thức Tỉnh)** | 14,800 | 45,500 | 30 phút | Đền Thần Vực |
-| **15** | 35,200 | 165,000 | 1.5 giờ | Rừng Sơ Khai (Boss Spore King) |
-| **20** | 65,400 | 410,000 | 3 giờ | Thung Lũng Cỏ Gió |
-| **30** | 158,000 | 1,480,000 | 8 giờ | Đầm Lầy Tử Khí |
-| **40** | 295,000 | 3,750,000 | 20 giờ | Hẻm Núi Gió Hú (Bắt đầu PK) |
-| **50** | 480,000 | 7,600,000 | 45 giờ | Núi Lửa Tro Tàn |
-| **60 (Max Cấp)** | 720,000 | 13,800,000 | 90+ giờ | Vết Nứt Hư Không & Vực Đá Quý |
+| Cảnh Giới | Thang Cấp (Level) | Tiểu Cảnh Giới | Tổng EXP Tích Lũy | Thời Gian Cày Ước Tính | Khu Vực Bản Đồ Tương Ứng |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **1. Luyện Khí Kỳ** | **Lv 1 - 20** | 10 Tầng Kinh Mạch | 450,000 | 1 - 3 Ngày | Làng Khởi Nguyên & Rừng Sơ Khai |
+| **2. Trúc Cơ Kỳ** | **Lv 21 - 40** | Sơ / Trung / Hậu / Viên Mãn | 4,200,000 | 1 - 2 Tuần | Thung Lũng Cỏ Gió & Đài Thái Hư (Chọn Phe) |
+| **3. Kim Đan Kỳ** | **Lv 41 - 60** | Sơ / Trung / Hậu / Viên Mãn | 18,500,000 | 3 - 4 Tuần | Đầm Lầy Tử Khí (Tam Trọng Lôi Kiếp) |
+| **4. Nguyên Anh Kỳ** | **Lv 61 - 80** | Sơ / Trung / Hậu / Viên Mãn | 58,000,000 | 1.5 - 2 Tháng | Miệng Núi Lửa Tro Tàn (Lục Trọng Lôi Kiếp) |
+| **5. Hóa Thần Kỳ** | **Lv 81 - 100** | Sơ / Trung / Hậu / Viên Mãn | 145,000,000 | 2.5 - 3 Tháng | Hẻm Núi Gió Hú (Cửu Trọng Lôi Kiếp) |
+| **6. Luyện Hư Kỳ** | **Lv 101 - 115** | Sơ / Trung / Hậu / Viên Mãn | 280,000,000 | 4 - 5 Tháng | Vực Đá Quý (Tâm Ma Huyễn Cảnh) |
+| **7. Hợp Thể Kỳ** | **Lv 116 - 130** | Sơ / Trung / Hậu / Viên Mãn | 520,000,000 | 6 - 8 Tháng | Vết Nứt Hư Không (Bát Cực Lôi Kiếp) |
+| **8. Đại Thừa Kỳ** | **Lv 131 - 145** | Sơ / Trung / Hậu / Viên Mãn | 890,000,000 | 9 - 12 Tháng | Phế Tích Cổ Thụ Thần Vực |
+| **9. Độ Kiếp Phi Thăng**| **Lv 146 - 150**| Cực Hạn Phong Thần | **1,500,000,000** | **1 Năm+ (Endgame)**| Tế Đàn Khởi Nguyên (Cửu Cửu 81 Đạo Lôi) |
 
-### 3.2. Công Thức Phân Chia EXP Trong Tổ Đội (Party)
-Khi 1 thành viên trong tổ đội hạ gục quái vật:
-
-$$\text{Total\_Party\_EXP} = \text{Monster\_EXP} \times [1 + 0.10 \times (\text{Số thành viên cùng map} - 1)]$$
-
-- Đội 1 người: $100\%$ EXP
-- Đội 2 người: $110\%$ EXP chia đều ($55\%$ mỗi người)
-- Đội 3 người: $120\%$ EXP chia đều ($40\%$ mỗi người)
-- Đội 4 người: $130\%$ EXP chia đều (Nếu đứng sát nhau cùng màn hình được buff thêm **+10% Party Synergy**, tổng cộng nhận **$140\%$ EXP**).
+### 3.2. Bốn Nấc Thang Tiểu Cảnh Giới
+Mỗi Đại Cảnh Giới chia làm 4 giai đoạn nạp EXP:
+* **Sơ Kỳ (0% - 25%):** Mở khóa chỉ số nền tảng của cảnh giới.
+* **Trung Kỳ (26% - 50%):** Tăng 10% uy lực toàn bộ kỹ năng.
+* **Hậu Kỳ (51% - 75%):** Tăng 15% tốc độ hồi phục Mana / Nội lực.
+* **Đại Viên Mãn (76% - 100%):** Đạt ngưỡng **Nghẽn Cảnh Giới (Bottleneck)**. EXP bị khóa 100% cho đến khi thực hiện nghi thức Độ Kiếp!
 
 ---
 
 ## 4. BẢNG CHỈ SỐ QUÁI VẬT & MA THÚ BẠO CHÚA (MONSTER STATS TABLE)
 
-| Tên Quái Vật | Cấp Độ | Máu (HP) | Sát Thương (ATK) | Giáp (Armor) | EXP Rơi | Vàng (Gold) | Tỷ Lệ Rơi Đồ Đặc Biệt |
+| Tên Quái Vật | Cấp Độ | Máu (HP) | Sát Thương (ATK) | Giáp (Armor) | EXP Rơi | Vàng (Gold) | Drop Đan Dược & Sách |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| **Ốc Sên Vỏ Gai** | 1 | 80 | 8 - 12 | 2 | 25 | 2 - 5 | 10% Nhặt Mảnh Tàn Trang |
-| **Nấm Độc Biến Dị** | 5 | 220 | 18 - 24 | 8 | 70 | 8 - 15 | 8% Mảnh Tàn Trang, 2% Đá Cấp 1 |
-| **Heo Rừng Cuồng Nộ** | 10 | 650 | 45 - 60 | 20 | 210 | 25 - 40 | 5% Đá Cấp 1, 1% Trang Bị Lam |
-| **Ma Thú Spore King (Boss)** | **15** | **18,500** | **120 - 160** | **65** | **8,500** | **500 - 1,200** | **100% Rơi Sách Lam, 30% Đá Cấp 2** |
-| **Sói Bão Cỏ Gió** | 22 | 1,800 | 95 - 120 | 45 | 520 | 60 - 90 | 4% Đá Cấp 2, 2% Bụi Ma Pháp |
-| **Bạo Trăn Đầm Lầy** | 30 | 3,400 | 160 - 210 | 80 | 1,100 | 120 - 180 | 3% Đá Cấp 2, 1% Sách Lam |
-| **Xà Thần Hydra (Boss)** | **35** | **85,000** | **350 - 480** | **150** | **38,000** | **3,000 - 6,000** | **80% Sách Tím (Epic), 50% Đá Cấp 3** |
-| **Hắc Báo Tro Tàn** | 42 | 6,200 | 280 - 350 | 140 | 2,400 | 250 - 380 | 5% Đá Cấp 3, 3% Bụi Ma Pháp |
-| **Hỏa Viêm Golem (Boss)** | **48** | **240,000** | **750 - 980** | **320** | **110,000** | **15,000** | **100% Sách Tím, 20% Sách Vàng** |
-| **Void Herald (World Boss)**| **60** | **850,000** | **1,800 - 2,400**| **580** | **450,000** | **50,000** | **100% Sách Thần Thoại Vàng, Bùa Hộ Mệnh**|
+| **Ốc Sên Vỏ Gai** | 1 | 80 | 8 - 12 | 2 | 25 | 2 - 5 | Mảnh Tàn Trang Luyện Khí |
+| **Nấm Độc Biến Dị** | 10 | 650 | 45 - 60 | 20 | 210 | 25 - 40 | Bột Tẩy Tủy Sơ Cấp |
+| **Spore King (Boss)** | **20** | **35,000** | **180 - 240** | **95** | **15,000** | **2,000** | **Trúc Cơ Đan (100% rơi)** |
+| **Sói Bão Cỏ Gió** | 35 | 4,200 | 190 - 250 | 85 | 1,400 | 150 | Dược Thảo Ngưng Đan |
+| **Xà Thần Hydra (Boss)** | **60** | **280,000** | **850 - 1,100** | **320** | **120,000** | **18,000** | **Ngưng Đan Lộ + Sách Tím Epic** |
+| **Hỏa Viêm Golem (Boss)**| **80** | **750,000** | **1,800 - 2,400**| **580** | **380,000** | **45,000** | **Hóa Anh Đan + Sách Vàng Mythic** |
+| **Void Herald (World Boss)**| **100**| **2,500,000**| **4,200 - 5,500**| **1,100**| **1,200,000**| **150,000** | **Thần Hồn Thảo + Thần Khí +15** |
+| **Thái Cổ Tà Thần (Raid)** | **150**| **15,000,000**| **12,000 - 18,000**| **3,500**| **8,000,000**| **1,000,000**| **Phi Thăng Thần Dược + Rương UR** |
 
 ---
 
 ## 5. MÔ HÌNH TOÁN XÁC SUẤT CƯỜNG HÓA VŨ KHÍ (+1 ĐẾN +15)
 
-Cơ chế cường hóa là cỗ máy "hút vàng" (Gold Sink) và giữ giá trị cho tài nguyên trong game.
-
-### 5.1. Bảng Tính Kỳ Vọng Chi Phí (Expected Cost Matrix)
-
-*Giả định: Đá Cường Hóa sơ cấp = 1,000 Vàng, Đá trung cấp = 5,000 Vàng, Đá cao cấp = 25,000 Vàng.*
-
-```mermaid
-graph LR
-    subgraph Giai_Doan_1[An Toàn: +1 -> +3]
-        P1[100% Thành công]
-    end
-    subgraph Giai_Doan_2[Rủi Ro Nhẹ: +4 -> +6]
-        P2[Xịt tụt 1 cấp]
-    end
-    subgraph Giai_Doan_3[Căng Thẳng: +7 -> +9]
-        P3[Xịt rớt về +4]
-    end
-    subgraph Giai_Doan_4[Tử Thần: +10 -> +15]
-        P4[Xịt về 0 hoặc VỠ NÁT]
-    end
-    Giai_Doan_1 --> Giai_Doan_2 --> Giai_Doan_3 --> Giai_Doan_4
-```
-
-| Cấp Độ Mục Tiêu | Tỷ Lệ Cơ Bản | Phí Vàng Mỗi Lần | Loại Đá Yêu Cầu | Số Lần Thử Trung Bình (Kỳ Vọng) | Chỉ Số Vũ Khí Tăng Thêm |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| **+1** | 100% | 1,000 | Đá Cấp 1 x1 | 1 lần | +5 ATK |
-| **+2** | 100% | 2,000 | Đá Cấp 1 x2 | 1 lần | +10 ATK |
-| **+3** | 100% | 3,000 | Đá Cấp 1 x3 | 1 lần | +18 ATK |
-| **+4** | 60% | 5,000 | Đá Cấp 2 x1 | 1.67 lần | +30 ATK (Bắt đầu phát sáng trắng) |
-| **+5** | 50% | 8,000 | Đá Cấp 2 x2 | 3.2 lần (do rớt +4) | +45 ATK |
-| **+6** | 45% | 12,000 | Đá Cấp 2 x3 | 6.5 lần | +65 ATK |
-| **+7** | 35% | 20,000 | Đá Cấp 3 x1 | ~14 lần (Rớt về +4) | +95 ATK (Hào quang xanh lơ) |
-| **+8** | 25% | 30,000 | Đá Cấp 3 x2 | ~35 lần | +135 ATK |
-| **+9** | 20% | 45,000 | Đá Cấp 3 x3 | ~90 lần | +185 ATK |
-| **+10** | 15% | 70,000 | Đá Cấp 4 x1 | ~220 lần | +260 ATK (Hào quang vàng kim) |
-| **+11** | 10% | 100,000 | Đá Cấp 4 x2 | ~550 lần | +360 ATK |
-| **+12** | 8% | 150,000 | Đá Cấp 4 x3 | ~1,200 lần | +490 ATK |
-| **+13** | 5% | 250,000 | Đá Cấp 5 x1 | ~3,100 lần | +660 ATK (Hào quang đỏ rực + Sét) |
-| **+14** | 3% | 400,000 | Đá Cấp 5 x2 | ~8,500 lần | +880 ATK |
-| **+15** | **1.5%** | 1,000,000 | Đá Cấp 5 x5 | **~25,000 lần** | **+1,250 ATK (Cầu vồng tím Thần Khí)** |
+*Giữ nguyên cơ chế cân bằng Gold Sink: +1 đến +3 (100%), +4 đến +6 (tụt 1 cấp), +7 đến +9 (rớt về +4), +10 đến +12 (rớt về +4, cần bùa cao cấp), +13 đến +14 (nguy cơ vỡ 10%), +15 (1.5%, thất bại vỡ nát 100%).*
 
 ---
 
 ## 6. HỆ THỐNG TRỌNG SỐ DÒNG NGẪU NHIÊN (AFFIX RNG WEIGHTS)
 
-Khi một cuốn Sách Phép rơi ra từ Ma Thú Bạo Chúa, server thực thi thuật toán chọn dòng ngẫu nhiên dựa trên bảng trọng số:
-
-$$\text{Xác suất ra dòng } i = \frac{\text{Weight}_i}{\sum \text{Weights}}$$
-
-### 6.1. Bảng Trọng Số & Biên Độ Chỉ Số (Min - Max Range)
-
-| Mã Dòng (Affix ID) | Tên Thuộc Tính Hiển Thị | Trọng Số (Weight) | Tỷ Lệ Xuất Hiện (%) | Khoảng Giá Trị Min - Max |
-| :--- | :--- | :---: | :---: | :---: |
-| `AFFIX_CDR` | Giảm thời gian hồi chiêu | 150 | 15.0% | `3% ~ 10%` |
-| `AFFIX_AOE` | Mở rộng bán kính diện rộng chiêu | 120 | 12.0% | `5% ~ 15%` |
-| `AFFIX_PROJ_SPD` | Tăng tốc độ bay của đường đạn | 140 | 14.0% | `10% ~ 25%` |
-| `AFFIX_MANA_LEECH`| Hút Mana khi tấn công | 80 | 8.0% | `1.0% ~ 3.0%` |
-| `AFFIX_CRIT_CHANCE`| Tăng tỷ lệ bạo kích | 100 | 10.0% | `2.0% ~ 6.0%` |
-| `AFFIX_CRIT_DMG` | Tăng sát thương bạo kích | 90 | 9.0% | `8.0% ~ 20.0%` |
-| `AFFIX_ATK_SPEED` | Tăng tốc độ xuất chiêu cơ bản | 110 | 11.0% | `3.0% ~ 8.0%` |
-| `AFFIX_PENETRATION`| Xuyên giáp / Xuyên kháng phép | 70 | 7.0% | `5.0% ~ 12.0%` |
-| `AFFIX_RES_BOOST` | Tăng thêm sát thương đồng hệ | 60 | 6.0% | `5.0% ~ 15.0%` |
-| `AFFIX_ALL_STATS` | Tăng toàn bộ 4 chỉ số tiềm năng | 30 | 3.0% | `+5 ~ +15 Điểm` |
-| **TỔNG** | - | **1,000** | **100%** | - |
+*10 dòng Affix rơi từ Boss dã ngoại theo trọng số chuẩn mực: Giảm hồi chiêu (15%), Diện rộng (12%), Tốc độ đạn (14%), Hút mana (8%), Tỷ lệ bạo kích (10%), Sát thương chí mạng (9%), Tốc đánh (11%), Xuyên giáp (7%), Thưởng đồng hệ (6%), Toàn chỉ số (3%).*
 
 ---
 
 ## 7. CÂN BẰNG PVP & TỶ LỆ TRỪNG PHẠT TÊN ĐỎ
 
-### 7.1. Điều Chỉnh Sát Thương Người vs Người (PvP Damage Normalization)
-Để đảm bảo trong PvP không có hiện tượng 1 chiêu "one-shot" gây ức chế:
-- **Global PvP Multiplier:** Toàn bộ sát thương giữa người chơi với nhau tự động nhân với hệ số **$0.60$ (Giảm 40% sát thương gốc)**.
-- **Kháng hiệu ứng khống chế (Crowd Control Diminishing Returns):**
-  - Nếu người chơi bị làm chậm hoặc choáng 2 lần liên tiếp trong vòng 4 giây, thời gian tác dụng của lần thứ 2 giảm đi **50%**, lần thứ 3 được **miễn nhiễm khống chế trong 3 giây**.
+*Global PvP Multiplier: Sát thương người vs người nhân hệ số $0.60$. Tên Đỏ chết rơi 10% - 25% Vàng và có 25% - 50% nguy cơ rơi trang bị trên người ra ngoài.*
 
-### 7.2. Bảng Phạt Hắc Danh (Điểm PK & Rơi Đồ Khi Tử Trận)
+---
 
-| Điểm PK | Màu Tên Hiển Thị | Tỷ Lệ Rơi Vàng Đang Giữ | Xác Suất Rơi 1 Món Đồ Trên Người | Hình Phạt Phụ |
-| :---: | :---: | :---: | :---: | :--- |
-| **0** | **Trắng** | 0% | **0% (Không bao giờ rớt)** | Không có |
-| **1 - 3** | **Cam Nhạt** | 3% Vàng | 5% | Giảm 10% tốc chạy khi vào Thành Phố |
-| **4 - 9** | **Đỏ Tươi** | 10% Vàng | **25%** | Lính gác cổng thành tấn công ngay khi gặp |
-| **10+** | **Đỏ Đậm (Đại Ma Đầu)** | **25% Vàng** | **50%** | Bị cấm dùng Trụ Dịch Chuyển & Cửa Hàng NPC |
+## 8. CÔNG THỨC TOÁN LÔI KIẾP & RỦI RO THẤT BẠI KHI ĐỘ KIẾP
+
+### 8.1. Sát Thương Từng Đạo Sét Lôi Kiếp
+Mỗi đạo sét giáng xuống người chơi tính theo phần trăm Máu Tối Đa kết hợp sát thương chuẩn:
+
+$$\text{Damage}_{\text{Bolt}} = (\text{Max\_HP} \times P_{\text{lightning}}) \times (1 - \text{Mitigation}_{\text{Tribulation}})$$
+
+| Cảnh Giới Đột Phá | Số Lượng Đạo Sét | Sát Thương Mỗi Đạo ($P_{\text{lightning}}$) | Khoảng Cách Giữa Các Đạo | Đan Dược Yêu Cầu |
+| :--- | :---: | :---: | :---: | :--- |
+| **Kim Đan (Lv 40 ➔ 41)** | **3 Đạo Sét** | 30% Max HP / đạo | 3.0 giây | Ngưng Đan Lộ |
+| **Nguyên Anh (Lv 60 ➔ 61)** | **6 Đạo Sét** | 35% Max HP / đạo | 2.5 giây | Hóa Anh Đan |
+| **Hóa Thần (Lv 80 ➔ 81)** | **9 Đạo Sét** | 40% Max HP / đạo | 2.0 giây | Thần Hồn Thảo |
+| **Hợp Thể (Lv 115 ➔ 116)** | **Bát Cực Lôi Ma (8 Đạo)** | 45% Max HP / đạo | 1.8 giây | Thái Ất Chân Thủy |
+| **Độ Kiếp Phi Thăng (Lv 145 ➔ 146)**| **Cửu Cửu Thiên Kiếp (81 Đạo)**| 50% Max HP / đạo | 0.8 giây liên hoàn | Cửu Chuyển Kim Đan |
+
+### 8.2. Biện Pháp Giảm Trừ Sát Thương Lôi Kiếp ($\text{Mitigation}_{\text{Tribulation}}$)
+* **Cắn Đan Dược Hộ Kiếp:** Giảm 25% sát thương sấm sét trong 30 giây.
+* **Trang bị Pháp Bảo / Bùa Chống Sét:** Hấp thụ 20,000 - 100,000 sát thương lôi đình.
+* **Đồng Đội Bang Hội "Hộ Pháp":** Mỗi đồng đội trong cùng bang đứng trong vòng trận pháp Bát Quái chia sẻ giúp **5% sát thương** (Tối đa 4 người chia sẻ giúp 20% sát thương).
+
+### 8.3. Hậu Quả Khi Đột Phá Thất Bại (Chết Trong Lôi Kiếp)
+* Nếu thanh Máu (HP) của người chơi tụt về 0 trong quá trình chịu lôi kiếp:
+  * ❌ **Đột phá thất bại!** Nhân vật ngã gục, bốc khói đen.
+  * ⚠️ **Trừng phạt:** **Tụt 20% lượng EXP của mốc Đại Viên Mãn hiện tại**, rơi vào trạng thái *"Trọng Thương Khí Huyết"* (giảm 15% chỉ số công thủ trong 10 phút).
+  * Người chơi phải cày lại 20% EXP và gom lại Đan Dược để chuẩn bị cho lần thử độ kiếp kế tiếp!
+
+---
+*Tài liệu Game Math & Balance được cập nhật chính thức vào hệ thống Master Docs của dự án Echoes of Genesis.*

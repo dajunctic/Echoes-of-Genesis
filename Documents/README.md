@@ -20,8 +20,8 @@ Toàn bộ tài liệu thiết kế và đặc tả kỹ thuật của dự án 
 * **Nội dung:** 
   * Biên niên sử "Thiên Địa Quy Nhất" (The Convergence) sáp nhập cõi Tây Huyễn Astraea và Thương Khung Vực Đông Phương.
   * 4 Đại Trận Doanh: Tiên Môn Kiếm Tông, Ma Đạo Cổ Tộc, Thần Thánh Giáo Đình, Hư Không Yêu Tộc.
-  * Thân thế Kẻ Thức Tỉnh Song Tu và tuyến nhiệm vụ chính qua các cảnh giới (Cấp 1 - 65).
-  * Bản đồ phân tầng thế giới 20 Channels.
+  * Thân thế Kẻ Thức Tỉnh Song Tu và 9 Chương nhiệm vụ chính qua 9 Đại Cảnh Giới (Cấp 1 - 150).
+  * Bản đồ phân tầng thế giới 9 Tầng & 20 Channels.
 
 ### 🎮 [02_TINH_NANG_GAMEPLAY_CORE.md](./02_TINH_NANG_GAMEPLAY_CORE.md)
 * **Nội dung:** 
@@ -34,7 +34,7 @@ Toàn bộ tài liệu thiết kế và đặc tả kỹ thuật của dự án 
     6. Kinh tế Chợ Trời: **Quy tắc Unbound 100% đồ Boss**, Mở sạp dã ngoại, Giao dịch P2P 2 bước.
     7. Chiến đấu PK Thế Giới: 3 Cờ (Trắng, Đỏ, Bang), Điểm tội ác, Tên Đỏ chết rơi vàng và 50% nguy cơ rớt đồ.
     8. Tổ đội 4 người (+10% EXP/người) và Sự kiện Công Thành Vực Đá Quý chiếm 5% thuế chợ trời.
-    9. **Hệ Thống Cảnh Giới Tu Tiên & Đột Phá Lôi Kiếp** (Luyện Khí -> Trúc Cơ Ngự Kiếm -> Kim Đan -> Nguyên Anh Bất Tử).
+    9. **Hệ Thống 9 Đại Cảnh Giới Tu Tiên & Rủi Ro Lôi Kiếp** (Cap Level 150, 4 Tiểu Cảnh Giới, Thất bại tụt 20% tu vi).
     10. **Gameplay B: Auto-Battler 5v5 Spine 2D** & Đài Triệu Hoán Gacha Thái Hư.
     11. **Cơ Chế Liên Thông Dual-Gameplay:** Kỹ năng Trợ Chiến Striker Call và Duyên Phận Buff % Lực Chiến.
     12. Các Chế Độ Phụ Bản Đội Hình Tướng Spine (Tháp Hư Không 100 tầng, Spine Arena, Viễn Chinh Roguelike).

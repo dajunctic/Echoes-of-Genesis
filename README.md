@@ -26,9 +26,10 @@ Dự án được định vị là một siêu phẩm **Dual-Gameplay Hybrid** v
    * **Kỹ Năng Trợ Chiến (Striker Call):** Cài đặt tướng Spine làm Hộ Vệ dã ngoại. Bấm phím nóng để gọi tướng đáp xuống giáng đòn Tuyệt Kỹ quét sạch quái vật xung quanh trong 2.5 giây.
    * **Tuần Hoàn Kinh Tế:** Cày quái ngoài map nhặt vé gacha & đan dược nuôi tướng; Đánh phụ bản tướng nhặt Sách Phép Mythic & Đá Cường Hóa cho nhân vật chính.
 
-4. **Trục Tu Tiên Cảnh Giới & Lôi Kiếp Thiên Phạt:**
-   * Thay vì chỉ có Level đơn điệu, người chơi đột phá qua 6 Đại Cảnh Giới: **Luyện Khí ➔ Trúc Cơ (Ngự Kiếm Phi Hành) ➔ Kim Đan ➔ Nguyên Anh (Tự Động Hồi Sinh) ➔ Hóa Thần ➔ Độ Kiếp Phi Thăng**.
-   * Đột phá nghẽn cảnh giới bằng sự kiện **Thiên Kiếp Lôi Đình**: Sấm sét giáng thẳng vào nhân vật, vượt kiếp thành công phát thông báo chấn động toàn server!
+4. **Trục Tu Tiên 9 Đại Cảnh Giới & Rủi Ro Lôi Kiếp (Cap Level 150):**
+   * Thay vì chỉ có Level đơn điệu, người chơi đột phá qua **9 Đại Cảnh Giới**: **Luyện Khí ➔ Trúc Cơ ➔ Kim Đan ➔ Nguyên Anh ➔ Hóa Thần ➔ Luyện Hư ➔ Hợp Thể ➔ Đại Thừa ➔ Độ Kiếp Phi Thăng**.
+   * Mỗi cảnh giới gồm 4 Tiểu Cảnh Giới (Sơ, Trung, Hậu, Đại Viên Mãn). Mốc Viên Mãn bị **Nghẽn Cảnh Giới** bắt buộc phải Độ Kiếp.
+   * **Rủi Ro Lôi Kiếp:** Sấm sét giáng xuống rút % máu thật. Nếu ngã gục trong lôi kiếp sẽ bị **tụt 20% tu vi**, cần dùng Đan Dược hộ kiếp và nhờ đồng đội Bang Hội đứng "Hộ Pháp"!
 
 ---
 
@@ -39,9 +40,9 @@ Toàn bộ tài liệu phân tích nghiệp vụ, kịch bản, toán học cân
 | STT | Tài Liệu Chi Tiết | Mô Tả Trọng Tâm |
 | :---: | :--- | :--- |
 | **00** | [🌟 00_THUONG_HIEU_VA_TEN_GAME.md](./Documents/00_THUONG_HIEU_VA_TEN_GAME.md) | Hồ sơ thương hiệu Echoes of Genesis, Slogan, Định vị & Màu sắc |
-| **01** | [📖 01_COT_TRUYEN_THE_GIOI.md](./Documents/01_COT_TRUYEN_THE_GIOI.md) | Sử thi Thiên Địa Quy Nhất, 4 Đại Trận Doanh, Tuyến nhiệm vụ Cấp 1 - 65 |
-| **02** | [🎮 02_TINH_NANG_GAMEPLAY_CORE.md](./Documents/02_TINH_NANG_GAMEPLAY_CORE.md) | 12 Trụ cột tính năng: Ấn ký, Grimoire, Săn Boss 20 Channels, Chợ Trời, PK, Tu Tiên |
-| **03** | [📐 03_CONG_THUC_VA_CAN_BANG_CHI_SO.md](./Documents/03_CONG_THUC_VA_CAN_BANG_CHI_SO.md) | Bảng toán học: Công thức giáp/kháng, EXP curve, Xác suất đập đồ +15, Affix RNG |
+| **01** | [📖 01_COT_TRUYEN_THE_GIOI.md](./Documents/01_COT_TRUYEN_THE_GIOI.md) | Sử thi Thiên Địa Quy Nhất, 4 Đại Trận Doanh, 9 Chương cốt truyện Cấp 1 - 150 |
+| **02** | [🎮 02_TINH_NANG_GAMEPLAY_CORE.md](./Documents/02_TINH_NANG_GAMEPLAY_CORE.md) | 12 Trụ cột tính năng: 9 Cảnh Giới, Lôi Kiếp, Săn Boss 20 Channels, Chợ Trời, PK |
+| **03** | [📐 03_CONG_THUC_VA_CAN_BANG_CHI_SO.md](./Documents/03_CONG_THUC_VA_CAN_BANG_CHI_SO.md) | Bảng toán học: EXP curve Lv 1 - 150, Sát thương Lôi Kiếp, Xác suất đập đồ +15 |
 | **04** | [🗓️ 04_KE_HOACH_PHAT_TRIEN_THEO_NGAY.md](./Documents/04_KE_HOACH_PHAT_TRIEN_THEO_NGAY.md) | Kế hoạch Sprint 35 ngày từ con số 0 đến ngày hoàn thiện bản chạy thử nghiệm |
 | **05** | [🏗️ 05_KIEN_TRUC_HE_THONG_VA_CODE_STRUCTURE.md](./Documents/05_KIEN_TRUC_HE_THONG_VA_CODE_STRUCTURE.md) | Kiến trúc 4 tầng chuẩn Enterprise, Popup Stack, Boot Pipeline, Zero GC System |
 | **06** | [💥 06_HE_THONG_SKILL_FX_VA_MISSILE.md](./Documents/06_HE_THONG_SKILL_FX_VA_MISSILE.md) | Danh mục kỹ năng 6 hệ Cổ Thư, Kỹ năng Field Boss, Bộ quản lý đạn đạo & GPU FX |
